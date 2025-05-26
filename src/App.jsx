@@ -1,10 +1,14 @@
+import MainPage from "./pages/MainPage"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 function App() {
 
   return (
-    <>
-      <p className="text-red-500">yo</p>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
