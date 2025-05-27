@@ -1,10 +1,25 @@
 import { useMemo, useState } from "react";
-import { FileText, Github, Linkedin, Mail, MapPin } from "lucide-react";
+import {
+  ExternalLink,
+  FileText,
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+} from "lucide-react";
 
 import Sudev from "../assets/Sudev.png";
 import Resume from "../assets/Sudev_Dahitule_Resume.pdf";
 import UnicodeLogo from "../assets/UnicodeLogo.png";
 import QYLogo from "../assets/QYLogo.png";
+
+import CertificateGenerator from "../assets/projects/CertificateGenerator.png";
+import SudokuSolver from "../assets/projects/SudokuSolver.png";
+import NQueensVisualizer from "../assets/projects/NQueensVisualizer.png";
+import ImageToAscii from "../assets/projects/ImageToAscii.png";
+import AiFitnessPlanner from "../assets/projects/AiFitnessPlanner.png";
+import QY from "../assets/projects/QY.png";
+import InProgress from "../assets/projects/InProgress.png";
 
 const MainPage = () => {
   let showBorder = false;
@@ -143,34 +158,140 @@ const MainPage = () => {
     []
   );
   let projects = {
-    "Personal": [
+    Personal: [
       {
         name: "Certificate Generator",
+        img: CertificateGenerator,
         desc: "Personalized certificate generator with email and QR verification",
-        stacks: ["Python", "Django", "HTML", "CSS", "JavaScript", "Pillow", "QR Codes"],
+        stacks: [
+          "Python",
+          "Django",
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "Pillow",
+          "QR Codes",
+          "jinja2",
+          "pdfkit",
+          "Postman",
+        ],
+        links: [
+          {
+            name: "Code",
+            link: "https://github.com/SudevOP1/CertificateGenerator",
+          },
+          { name: "Live", link: "" },
+        ],
       },
-      { name: "Sudoku Solver" },
-      { name: "Typing Game" },
-      { name: "N Queens Visualizer" },
-      { name: "Image to Ascii Art" },
-      { name: "Booknest" },
+      {
+        name: "Sudoku Solver",
+        img: SudokuSolver,
+        desc: "Backtracking-based Sudoku solver with interactive visual grid",
+        stacks: ["ReactJS", "Tailwind", "JavaScript", "Backtracking"],
+        links: [
+          { name: "Code", link: "https://github.com/SudevOP1/SudokuSolver" },
+          { name: "Live", link: "" },
+        ],
+      },
+      {
+        name: "N Queens Visualizer",
+        img: NQueensVisualizer,
+        desc: "Optimized visualization of all N-Queens solutions with interactive filters and statistics",
+        stacks: ["ReactJS", "TailwindCSS", "JavaScript", "Backtracking"],
+        links: [
+          {
+            name: "Code",
+            link: "https://github.com/SudevOP1/NQueensVisualizer",
+          },
+          { name: "Live", link: "" },
+        ],
+      },
+      {
+        name: "Image to Ascii Art",
+        img: ImageToAscii,
+        desc: "Transform images into stunningly detailed ASCII art using a full-stack web interface",
+        stacks: [
+          "ReactJS",
+          "Django",
+          "TailwindCSS",
+          "REST APIs",
+          "Python",
+          "Pillow",
+        ],
+        links: [
+          { name: "Code", link: "https://github.com/SudevOP1/ImageToAsciiArt" },
+          { name: "Live", link: "" },
+        ],
+      },
+      {
+        name: "AI Workout Planner",
+        img: AiFitnessPlanner,
+        desc: "Generate personalized fitness routines using an intelligent AI-powered workout planner",
+        stacks: [
+          "ReactJS",
+          "Django",
+          "Django REST Framework (DRF)",
+          "Google Gemini API",
+          "SQLite3",
+          "JSON Web Tokens (JWT)",
+          "REST APIs",
+          "Postman",
+        ],
+        links: [
+          {
+            name: "Code",
+            link: "https://github.com/SudevOP1/Unicode-Tasks/tree/main/Task%203",
+          },
+          { name: "Live", link: "" },
+        ],
+      },
+      {
+        name: "Typing Game (Work In Progress)",
+        img: null,
+        desc: "A casual typing practice game built with JavaScript Canvas",
+        stacks: ["HTML", "JavaScript", "Canvas", "JSON"],
+        links: [
+          {
+            name: "Code",
+            link: "https://github.com/SudevOP1/TypingGame",
+          },
+          { name: "Live", link: "" },
+        ],
+      },
+      // { name: "Booknest" },
+      // { name: "AI Meme Generator" },
       // { name: "Gemini Clone" },
       // { name: "Netflix Clone" },
-      // { name: "AI Meme Generator" },
       // { name: "Monster Shooter" },
+      // { name: "Space Shooter" },
       // { name: "Pong Game" },
       // { name: "Snake Game" },
-      // { name: "Space Shooter" },
       // { name: "Runner Game" },
       // { name: "Slide Puzzle" },
-      // { name: "Space Shooter" },
     ],
-    "Client": [
-      { name: "DiamondRock" },
+    Client: [
+      {
+        name: "DiamondRock",
+        img: QY,
+        desc: "Full-stack development with Django APIs and React frontend integration",
+        stacks: [
+          "ReactJS",
+          "Django",
+          "Django REST Framework (DRF)",
+          "TailwindCSS",
+          "JavaScript",
+          "Git",
+          "Postman",
+        ],
+        links: [
+          { name: "Code", link: "" },
+          { name: "Live", link: "https://diamondrock.in" },
+        ],
+      },
     ],
   };
 
-  // adding color to exps:
+  // adding color to experiences:
   experiences = experiences.map((e) => ({
     ...e,
     stacks: e.stacks.map((stack) => {
@@ -185,18 +306,47 @@ const MainPage = () => {
       return { stack, color };
     }),
   }));
+  // adding color to projects:
+  projects.Personal = projects.Personal.map((p) => ({
+    ...p,
+    stacks: p.stacks.map((stack) => {
+      let color = "";
+      for (let skillset of skills) {
+        if (skillset.list.includes(stack)) {
+          color = skillset.color;
+          break;
+        }
+      }
+      color = color.length > 0 ? color : tagColors["fuchsia"];
+      return { stack, color };
+    }),
+  }));
+  projects.Client = projects.Client.map((p) => ({
+    ...p,
+    stacks: p.stacks.map((stack) => {
+      let color = "";
+      for (let skillset of skills) {
+        if (skillset.list.includes(stack)) {
+          color = skillset.color;
+          break;
+        }
+      }
+      color = color.length > 0 ? color : tagColors["fuchsia"];
+      return { stack, color };
+    }),
+  }));
 
   return (
-    <div className="bg-gradient-to-b from-neutral-900 to-black min-h-screen font-[Rubik]">
-      {/* bg blur green circle */}
+    <div className="bg-gradient-to-b from-black to-black min-h-screen font-[Rubik]">
+      {/* bg blur circles */}
       <div
-        className="rounded-full bg-[#0b4f4a30] w-[40vw] h-[40vw] fixed
-          left-1/2 translate-[-50%] shadow-[0px_0px_100px_200px_#0b4f4a30]"
-      ></div>
+        className="rounded-full bg-[#0b4f4a40] w-[40vw] h-[40vw] fixed
+          left-1/2 translate-[-50%] shadow-[0px_0px_100px_200px_#0b4f4a40]"
+      />
       <div className="flex flex-col lg:flex-row text-white items-around">
         {/* left side */}
         <div
-          className={`lg:flex-3 flex flex-col p-10 md:p-30 md:py-15 lg:pr-10 lg:sticky lg:top-0 ${
+          className={`lg:flex-3 flex flex-col p-10 md:p-30 md:py-15 lg:pr-10 lg:sticky lg:h-0 lg:top-0 ${
             showBorder ? "border border-red-500/40" : ""
           }`}
         >
@@ -281,7 +431,7 @@ const MainPage = () => {
             {experiences.map((e, i) => (
               <div
                 key={i}
-                className="mt-5 border-l-3 border-slate-400 pl-8 py-2"
+                className="mt-5 border-l-3 border-slate-400/70 pl-8 py-2"
               >
                 <div className="flex gap-8 items-center">
                   <img
@@ -325,10 +475,100 @@ const MainPage = () => {
           </Header>
 
           {/* projects */}
-          <Header heading="Projects" className="border border-red-500">
-            {projects[activeProject].map((projects, i)=>(
-              <p key={i}>{projects.name}</p>
-            ))}
+          <Header heading="Projects" className="">
+
+            {/* buttons */}
+            <>
+              <button
+                onClick={() => window.open("/projects", "_blank")}
+                className="flex gap-1 items-center px-5 py-2 mt-2 rounded-full cursor-pointer transition
+                text-slate-300 bg-slate-500/20 hover:bg-slate-500/40 active:bg-slate-500/90
+                border border-white/60 hover:border-white w-full justify-center"
+              >
+                <p className="text-md font-semibold">View All Projects</p>
+                <ExternalLink className="w-4 h-4" />
+              </button>
+              <div
+                className="text-slate-300 bg-slate-500/20
+                w-full rounded-full p-1 flex gap-1 mt-2"
+              >
+                {["Personal", "Client"].map((projectType, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveProject(projectType)}
+                    className={`w-1/2 py-2 rounded-full transition text-md font-semibold cursor-pointer
+                      ${
+                        activeProject === projectType
+                          ? "bg-slate-400 text-slate-900"
+                          : "text-slate-400 hover:bg-slate-500/40"
+                      }`}
+                  >
+                    {projectType}
+                  </button>
+                ))}
+              </div>
+            </>
+
+            {/* projects */}
+            <div className="flex flex-wrap gap-5 mt-5">
+              {projects[activeProject].map((project, i) => (
+                <div
+                  className="relative h-35 w-70 md:h-45 md:w-90 rounded-2xl overflow-hidden cursor-pointer group"
+                  key={i}
+                  onClick={() =>
+                    window.open(
+                      project.links.find(
+                        (link) =>
+                          (link.name === "Code" && link.link.length > 0) ||
+                          (link.name === "Live" && link.link.length > 0)
+                      )?.link,
+                      "_blank"
+                    )
+                  }
+                >
+                  <div
+                    className="absolute inset-0 bg-cover bg-center transition group-hover:scale-105"
+                    style={{
+                      backgroundImage: `url(${
+                        project.img ? project.img : InProgress
+                      })`,
+                    }}
+                  />
+                  <div className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-black/60 to-black/80 z-0"></div>
+                  <div className="flex flex-col flex-1 gap-1 absolute bottom-2 left-2 z-10">
+                    <h1 className="text-md text-slate-100 font-semibold">
+                      {project.name}
+                    </h1>
+                    <p className="text-slate-300 font-normal text-xs">
+                      {project.desc}
+                    </p>
+                    <div className="flex flex-row gap-1">
+                      {project.links.map(
+                        (link, j) =>
+                          link.link.length > 0 && (
+                            <a
+                              key={j}
+                              href={link.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-1 px-3 py-1 rounded-full cursor-pointer transition
+                          text-slate-300 bg-slate-600/30 hover:bg-slate-600/50 active:bg-slate-600/80
+                          border border-slate-500/60 hover:border-slate-400/80 text-xs font-medium"
+                            >
+                              {link.name === "Code" ? (
+                                <Github className="w-3 h-3" />
+                              ) : (
+                                <ExternalLink className="w-3 h-3" />
+                              )}
+                              {"View " + link.name}
+                            </a>
+                          )
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </Header>
         </div>
       </div>
@@ -336,16 +576,16 @@ const MainPage = () => {
   );
 };
 
-const Header = ({ heading, children, className="" }) => {
+const Header = ({ heading, children, className = "" }) => {
   return (
-    <div className={`text-xs sm:text-sm overflow-x-hidden ${className}`}>
+    <div className="text-xs sm:text-sm overflow-x-hidden">
       <div className="flex items-center gap-5">
         <h1 className="text-2xl sm:text-3xl text-slate-100 font-semibold">
           {heading}
         </h1>
         <div className="flex-1 w-full h-1 bg-linear-to-r from-slate-300/80 to-transparent rounded-full"></div>
       </div>
-      {children}
+      <div className={className}>{children}</div>
     </div>
   );
 };
