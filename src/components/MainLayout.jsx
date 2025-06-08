@@ -2,12 +2,10 @@ import { useEffect, useState } from "react";
 import { MapPin } from "lucide-react";
 
 import Sudev from "../assets/Sudev.png";
-import { useData } from "../DataContext";
+import { useData } from "../ContextData";
 
 const MainLayout = ({ children, classname }) => {
-  let showBorder = false;
   const [scrollProgress, setScrollProgress] = useState(0);
-
   let data = useData();
   let contacts = data.contacts;
 
@@ -28,11 +26,7 @@ const MainLayout = ({ children, classname }) => {
     <div className="bg-gradient-to-b from-slate-950 via-black to-slate-950 min-h-screen font-[Rubik]">
       <div className="flex flex-col lg:flex-row text-white items-around">
         {/* left side */}
-        <div
-          className={`lg:flex-3 flex flex-col p-10 md:p-30 md:py-15 lg:pr-10 lg:sticky lg:h-0 lg:top-0 ${
-            showBorder ? "border border-red-500/40" : ""
-          }`}
-        >
+        <div className="lg:flex-3 flex flex-col p-10 md:p-30 md:py-15 lg:pr-10 lg:sticky lg:h-0 lg:top-0">
           <>
             <img
               src={Sudev}
@@ -75,9 +69,7 @@ const MainLayout = ({ children, classname }) => {
         {/* Right Side */}
         <div
           className={`lg:flex-5 flex flex-col p-10 pt-0 md:p-30 md:pt-0
-            lg:p-35 lg:pt-20 lg:pl-0 overflow-x-hidden  ${classname} ${
-            showBorder ? "border border-red-500/40" : ""
-          }`}
+            lg:p-35 lg:pt-20 lg:pl-0 overflow-x-hidden ${classname}`}
         >
           {children}
         </div>

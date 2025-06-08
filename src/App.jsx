@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import MainPage from "./pages/MainPage"
 import Projects from "./pages/Projects"
-import DataProvider from "./DataContext.jsx"
+import DataProvider from "./ContextData.jsx"
 
 function App() {
 

@@ -28,8 +28,9 @@ export function useData() {
 
 const DataProvider = ({ children }) => {
   let aboutMeText = [
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices, orci sed volutpat maximus, purus sapien viverra arcu, eu luctus leo sem eu orci. Aenean venenatis feugiat lacus, vel consequat nulla pellentesque at. Aenean eu ultricies ligula.",
-    "Donec viverra ultrices vestibulum. Curabitur nec mi neque. Maecenas ac tincidunt est. Fusce maximus erat quis sapien euismod porttitor. Vivamus non imperdiet risus. Aenean pulvinar arcu orci, non ullamcorper dolor lobortis ut. Morbi scelerisque lacus sed tincidunt feugiat. In convallis consectetur convallis. Morbi tempus sem eu lacinia aliquet. Morbi porta turpis risus, porttitor volutpat metus molestie id. Vivamus vitae urna et arcu dictum.",
+    "Hi! I'm Sudev, a full-stack developer who loves building creative and functional web applications.",
+    "From crafting sleek UIs with React and Tailwind to designing robust APIs with Django and DRF, I enjoy bringing ideas to life through code.",
+    "I enjoy taking on challenges that blend logic, design, and real-world impact and strongly believe in clean code, attention to detail, and user-first thinking.",
   ];
   let contacts = [
     {
@@ -419,12 +420,12 @@ const DataProvider = ({ children }) => {
   return (
     <dataContext.Provider
       value={{
-        "aboutMeText": aboutMeText,
-        "contacts": contacts,
-        "skills": skills,
-        "experiences": experiences,
-        "projects": projects,
-        "getSkillColor": getSkillColor,
+        aboutMeText: aboutMeText,
+        contacts: contacts,
+        skills: skills,
+        experiences: experiences,
+        projects: projects,
+        getSkillColor: getSkillColor,
       }}
     >
       {children}

@@ -4,11 +4,11 @@ import { ExternalLink, Github } from "lucide-react";
 import Header from "../components/Header.jsx";
 import InProgress from "../assets/projects/InProgress.png";
 import MainLayout from "../components/MainLayout.jsx";
-import { useData } from "../DataContext.jsx";
+import { useData } from "../ContextData.jsx";
 
 const MainPage = () => {
   let [activeProject, setActiveProject] = useState("Personal");
-
+  
   let data = useData();
   let aboutMeText = data.aboutMeText;
   let skills = data.skills;
@@ -18,9 +18,9 @@ const MainPage = () => {
   return (
     <MainLayout classname="gap-15">
       {/* about me */}
-      <Header heading="About Me" className="border border-red-500">
+      <Header heading="About Me" className="mt-1 flex flex-col gap-2">
         {aboutMeText.map((text, i) => (
-          <p className="text-slate-300 font-normal mt-1" key={i}>
+          <p className="text-slate-300 font-normal" key={i}>
             {text}
           </p>
         ))}

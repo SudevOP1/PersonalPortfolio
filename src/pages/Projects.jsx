@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ExternalLink, Github } from "lucide-react";
-import { useData } from "../DataContext.jsx";
+import { useData } from "../ContextData.jsx";
 
 import InProgress from "../assets/projects/InProgress.png";
 import MainLayout from "../components/MainLayout.jsx";
