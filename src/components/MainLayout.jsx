@@ -1,38 +1,15 @@
-import { useEffect, useMemo, useState } from "react";
-import { FileText, Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { useEffect, useState } from "react";
+import { MapPin } from "lucide-react";
 
 import Sudev from "../assets/Sudev.png";
-import Resume from "../assets/Sudev_Dahitule_Resume.pdf";
+import { useData } from "../DataContext";
 
 const MainLayout = ({ children, classname }) => {
   let showBorder = false;
   const [scrollProgress, setScrollProgress] = useState(0);
 
-  let contacts = useMemo(
-    () => [
-      {
-        icon: <FileText className="w-5 h-5 ml-1" />,
-        label: "Resume",
-        href: Resume,
-      },
-      {
-        icon: <Linkedin className="w-5 h-5" />,
-        label: null,
-        href: "https://linkedin.com/in/Sudev-Dahitule",
-      },
-      {
-        icon: <Github className="w-5 h-5" />,
-        label: null,
-        href: "https://github.com/SudevOP1",
-      },
-      {
-        icon: <Mail className="w-5 h-5" />,
-        label: null,
-        href: "mailto:sudevdahitule06@gmail.com",
-      },
-    ],
-    []
-  );
+  let data = useData();
+  let contacts = data.contacts;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -114,15 +91,15 @@ const MainLayout = ({ children, classname }) => {
         />
       </div>
 
-      {/* hide default scrollbar */}
+      {/* remove default scrollbar */}
       <style>
         {`
           ::-webkit-scrollbar {
             display: none;
           }
           body {
-            -ms-overflow-style: none;  /* IE 10+ */
-            scrollbar-width: none;     /* Firefox */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
           }
         `}
       </style>
