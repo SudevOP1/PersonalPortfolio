@@ -92,7 +92,7 @@ const MainPage = () => {
         {/* buttons */}
         <>
           <button
-            onClick={() => window.open("/projects", "_blank")}
+            onClick={() => window.open("/PersonalPortfolio/projects", "_blank")}
             className="flex gap-1 items-center px-5 py-2 mt-2 rounded-full cursor-pointer transition
               text-slate-300 bg-slate-500/20 hover:bg-slate-500/40 active:bg-slate-500/90
               border border-white/60 hover:border-white w-full justify-center"

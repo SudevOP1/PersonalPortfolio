@@ -7,7 +7,7 @@ function App() {
 
   return (
     <DataProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/PersonalPortfolio/">
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/projects" element={<Projects />} />
