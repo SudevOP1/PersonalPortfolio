@@ -112,7 +112,7 @@ const DataProvider = ({ children }) => {
     Unicode: {
       img: UnicodeLogo,
       role: "Fullstack Django Mentee",
-      period: "Aug 25 - May 25",
+      period: "Aug 24 - May 25",
       desc: [
         "Part of DJ Sanghvi's Computer Dept's official tech club, working on fullstack Django and React projects",
         "Completed multiple project tasks under senior mentorship and gained hands-on experience",
