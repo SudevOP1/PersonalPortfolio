@@ -8,7 +8,7 @@ import { useData } from "../ContextData.jsx";
 
 const MainPage = () => {
   let [activeProject, setActiveProject] = useState("Personal");
-  
+
   let data = useData();
   let aboutMeText = data.aboutMeText;
   let skills = data.skills;
@@ -33,7 +33,10 @@ const MainPage = () => {
             <h1 className="text-lg text-slate-300 font-semibold">{cName}</h1>
             <div className="flex flex-wrap gap-2 mt-1">
               {c.list.map((skill, j) => (
-                <span key={j} className={`px-4 py-1 rounded-full ${c.color} `}>
+                <span
+                  key={j}
+                  className={`px-4 py-1 rounded-full backdrop-blur-xs ${c.color}`}
+                >
                   {skill}
                 </span>
               ))}
@@ -95,14 +98,14 @@ const MainPage = () => {
             onClick={() => window.open("/PersonalPortfolio/projects", "_blank")}
             className="flex gap-1 items-center px-5 py-2 mt-2 rounded-full cursor-pointer transition
               text-slate-300 bg-slate-500/20 hover:bg-slate-500/40 active:bg-slate-500/90
-              border border-white/60 hover:border-white w-full justify-center"
+              border border-white/60 hover:border-white w-full justify-center backdrop-blur-xs"
           >
             <p className="text-md font-semibold">View All Projects</p>
             <ExternalLink className="w-4 h-4" />
           </button>
           <div
-            className="text-slate-300 bg-slate-500/20
-                w-full rounded-full p-1 flex gap-1 mt-2"
+            className="text-slate-300 bg-slate-500/20 backdrop-blur-xs
+              w-full rounded-full p-1 flex gap-1 mt-2"
           >
             {["Personal", "Client"].map((projectType, i) => (
               <button
