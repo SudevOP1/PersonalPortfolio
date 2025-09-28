@@ -35,9 +35,10 @@ const MainPage = () => {
               {c.list.map((skill, j) => (
                 <span
                   key={j}
-                  className={`px-4 py-1 rounded-full backdrop-blur-xs ${c.color}`}
+                  onClick={() => window.open(skill.link, "_blank")}
+                  className={`px-3 py-1 rounded-full backdrop-blur-xs cursor-pointer ${c.color}`}
                 >
-                  {skill}
+                  {skill.name}
                 </span>
               ))}
             </div>
