@@ -14,12 +14,12 @@ import AiFitnessPlanner from "../src/assets/projects/AiFitnessPlanner.png";
 import QY from "../src/assets/projects/QY.png";
 import GeminiClone from "../src/assets/projects/GeminiClone.png";
 import MemeGenerator from "../src/assets/projects/MemeGenerator.png";
-import MonsterShooter from "../src/assets/projects/games/MonsterShooter.png";
-import SpaceShooter from "../src/assets/projects/games/SpaceShooter.png";
-import PongGame from "../src/assets/projects/games/PongGame.png";
-import SnakeGame from "../src/assets/projects/games/SnakeGame.png";
-import RunnerGame from "../src/assets/projects/games/RunnerGame.png";
-import SlidePuzzle from "../src/assets/projects/games/SlidePuzzle.png";
+import MonsterShooter from "../src/assets/projects/Games/MonsterShooter.png";
+import SpaceShooter from "../src/assets/projects/Games/SpaceShooter.png";
+import PongGame from "../src/assets/projects/Games/PongGame.png";
+import SnakeGame from "../src/assets/projects/Games/SnakeGame.png";
+import RunnerGame from "../src/assets/projects/Games/RunnerGame.png";
+import SlidePuzzle from "../src/assets/projects/Games/SlidePuzzle.png";
 
 let dataContext = createContext();
 export function useData() {
