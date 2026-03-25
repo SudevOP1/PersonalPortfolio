@@ -196,7 +196,7 @@ const MainLayout = ({ children, classname }) => {
             <>
               <img
                 src={Sudev}
-                className="rounded-full w-25 sm:w-30 md:w-35 lg:35"
+                className="rounded-full w-35 sm:w-50 md:w-50 lg:w-50"
               />
               <h1 className="text-2xl sm:text-4xl text-slate-100 font-bold mt-3 capitalize">
                 Sudev Dahitule
