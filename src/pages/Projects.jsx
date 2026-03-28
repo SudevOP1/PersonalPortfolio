@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ExternalLink, Github } from "lucide-react";
 import { useData } from "../ContextData.jsx";
+import { motion } from "framer-motion";
 
 import InProgress from "../assets/projects/InProgress.png";
 import MainLayout from "../components/MainLayout.jsx";
@@ -39,10 +40,15 @@ const Projects = () => {
       <div className="flex flex-col gap-6 mt-6">
         {Object.entries(projects[activeProject]).map(
           ([projectName, project], i) => (
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(56, 189, 248, 0.1), 0 8px 10px -6px rgba(56, 189, 248, 0.1)" }}
               key={i}
-              className="w-full h-fit flex flex-col gap-5 p-4 pb-5 overflow-hidden max-w-300 group
-              cursor-pointer rounded-2xl border border-slate-400/80 border-slate-400/80 backdrop-blur-xs"
+              className="w-full h-fit flex flex-col gap-5 p-5 pb-6 overflow-hidden max-w-300 group
+              cursor-pointer rounded-2xl border border-slate-600/50 hover:border-sky-500/50 backdrop-blur-md bg-slate-900/40 shadow-xl transition-colors duration-300"
               onClick={() =>
                 window.open(
                   project.links.find(
@@ -55,7 +61,7 @@ const Projects = () => {
               }
             >
               {/* image */}
-              <div className="rounded-lg border border-slate-400/80 overflow-hidden">
+              <div className="rounded-lg border border-slate-700/80 overflow-hidden shadow-md">
                 <img
                   src={project.img ? project.img : InProgress}
                   className="group-hover:scale-105 transition"
@@ -88,7 +94,9 @@ const Projects = () => {
                 {project.links.map(
                   (link, j) =>
                     link.link.length > 0 && (
-                      <a
+                      <motion.a
+                        whileHover={{ scale: 1.05, backgroundColor: "rgba(14, 165, 233, 0.2)" }}
+                        whileTap={{ scale: 0.95 }}
                         key={j}
                         href={link.link}
                         target="_blank"
@@ -96,7 +104,7 @@ const Projects = () => {
                         onClick={(e) => e.stopPropagation()}
                         className="flex items-center gap-1 px-4 py-2 rounded-full cursor-pointer transition
                         text-slate-300 bg-slate-600/30 hover:bg-slate-600/50 active:bg-slate-600/80
-                        border border-slate-500/60 hover:border-slate-400/80 text-md font-medium"
+                        border border-slate-500/60 hover:border-sky-400/80 text-md font-medium"
                       >
                         {link.name === "Code" ? (
                           <Github className="w-4 h-4" />
@@ -104,11 +112,11 @@ const Projects = () => {
                           <ExternalLink className="w-4 h-4" />
                         )}
                         {"View " + link.name}
-                      </a>
+                      </motion.a>
                     )
                 )}
               </div>
-            </div>
+            </motion.div>
           )
         )}
       </div>

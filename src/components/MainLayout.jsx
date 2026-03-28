@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { MapPin } from "lucide-react";
+import { motion } from "framer-motion";
 
 import Sudev from "../assets/Sudev.png";
 import { useData } from "../ContextData";
@@ -194,26 +195,51 @@ const MainLayout = ({ children, classname }) => {
           {/* left side */}
           <div className="lg:flex-3 flex flex-col p-10 md:p-30 md:py-15 lg:pr-10 lg:sticky lg:h-0 lg:top-0">
             <>
-              <img
+              <motion.img
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
                 src={Sudev}
-                className="rounded-full w-35 sm:w-50 md:w-50 lg:w-50"
+                className="rounded-full w-35 sm:w-50 md:w-50 lg:w-50 shadow-2xl shadow-sky-500/20"
               />
-              <h1 className="text-2xl sm:text-4xl text-slate-100 font-bold mt-3 capitalize">
+              <motion.h1 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-2xl sm:text-4xl text-slate-100 font-bold mt-3 capitalize">
                 Sudev Dahitule
-              </h1>
-              <h1 className="text-2xl text-slate-500 font-semibold uppercase">
+              </motion.h1>
+              <motion.h1 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-2xl font-semibold uppercase bg-linear-to-r from-sky-400 to-indigo-500 bg-clip-text text-transparent mt-1">
                 Full Stack Web Developer
-              </h1>
-              <h1 className="text-lg text-slate-300 mt-2 font-semibold flex items-center gap-1">
+              </motion.h1>
+              <motion.h1 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="text-lg text-slate-300 mt-2 font-semibold flex items-center gap-1">
                 <MapPin className="w-4 h-4" /> Mumbai, India
-              </h1>
-              <p className="text-md text-slate-300 mt-5 font-medium">
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="text-md text-slate-300 mt-5 font-medium">
                 Coding enthusiast turning ideas into interactive experiences and
                 tools
-              </p>
-              <div className="flex flex-row gap-4 mt-4">
+              </motion.p>
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="flex flex-row gap-4 mt-4">
                 {contacts.map((btn, index) => (
-                  <a
+                  <motion.a
+                    whileHover={{ scale: 1.1, backgroundColor: "rgba(14, 165, 233, 0.2)" }}
+                    whileTap={{ scale: 0.95 }}
                     key={index}
                     href={btn.href}
                     target={btn.label === "Resume" ? "_self" : "_blank"}
@@ -229,18 +255,21 @@ const MainLayout = ({ children, classname }) => {
                     {btn.label && (
                       <span className="pl-1 pr-2">{btn.label}</span>
                     )}
-                  </a>
+                  </motion.a>
                 ))}
-              </div>
+              </motion.div>
             </>
           </div>
           {/* Right Side */}
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
             className={`lg:flex-5 flex flex-col p-10 pt-0 md:p-30 md:pt-0
               lg:p-35 lg:pt-20 lg:pl-0 overflow-x-hidden ${classname}`}
           >
             {children}
-          </div>
+          </motion.div>
         </div>
 
         {/* vertical scroll progress bar */}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ExternalLink, Github } from "lucide-react";
+import { motion } from "framer-motion";
 
 import Header from "../components/Header.jsx";
 import InProgress from "../assets/projects/InProgress.png";
@@ -29,34 +30,50 @@ const MainPage = () => {
       {/* skills */}
       <Header heading="Skills">
         {Object.entries(skills).map(([cName, c], i) => (
-          <div className="mt-3" key={i}>
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
+            className="mt-3" key={i}>
             <h1 className="text-lg text-slate-300 font-semibold">{cName}</h1>
             <div className="flex flex-wrap gap-2 mt-1">
               {c.list.map((skill, j) => (
-                <span
+                <motion.span
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.1 + j * 0.05 }}
                   key={j}
                   onClick={() => window.open(skill.link, "_blank")}
-                  className={`px-3 py-1 rounded-full backdrop-blur-xs cursor-pointer ${c.color}`}
+                  className={`px-3 py-1 rounded-full backdrop-blur-xs cursor-pointer shadow-sm hover:shadow-md transition-shadow ${c.color}`}
                 >
                   {skill.name}
-                </span>
+                </motion.span>
               ))}
             </div>
-          </div>
+          </motion.div>
         ))}
       </Header>
 
       {/* experience */}
       <Header heading="Experience">
         {Object.entries(experiences).map(([name, e], i) => (
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: i * 0.2 }}
             key={i}
-            className="mt-5 border-l-3 border-slate-400/70 pl-8 py-2"
+            className="mt-5 border-l-3 border-sky-500/50 pl-8 py-2 relative group"
           >
-            <div className="flex gap-8 items-center">
+            <div className="absolute w-3 h-3 bg-sky-400 rounded-full -left-[7.5px] top-10 shadow-[0_0_10px_2px_rgba(56,189,248,0.6)] group-hover:scale-150 transition-transform duration-300"></div>
+            <div className="flex gap-8 items-center bg-slate-800/20 p-4 rounded-xl backdrop-blur-sm border border-slate-700/50 hover:border-sky-500/30 transition-colors">
               <img
                 src={e.img}
-                className="rounded-full w-20 h-20 sm:w-25 sm:h-25 bg-white"
+                className="rounded-full w-20 h-20 sm:w-25 sm:h-25 bg-white shadow-lg"
               />
               <div className="flex flex-col">
                 <h1 className="text-xl sm:text-2xl text-slate-100 font-semibold">
@@ -65,29 +82,29 @@ const MainPage = () => {
                 <h1 className="text-md sm:text-lg text-slate-300 font-semibold">
                   {e.role}
                 </h1>
-                <h1 className="text-xs sm:text-sm text-slate-500 font-semibold">
+                <h1 className="text-xs sm:text-sm text-sky-400 font-semibold">
                   {e.period}
                 </h1>
               </div>
             </div>
-            <div className="flex flex-col mt-3">
+            <div className="flex flex-col mt-3 pl-2">
               {e.desc.map((line, j) => (
-                <p className="text-sm text-slate-300 font-normal mt-1" key={j}>
+                <p className="text-sm text-slate-300 font-normal mt-1 leading-relaxed" key={j}>
                   • {line}
                 </p>
               ))}
             </div>
-            <div className="flex flex-wrap mt-3 gap-2">
+            <div className="flex flex-wrap mt-3 gap-2 pl-2">
               {e.stacks.map((stack, j) => (
                 <span
                   key={j}
-                  className={`px-4 py-1 rounded-full text-xs sm:text-sm ${stack.color}`}
+                  className={`px-4 py-1 rounded-full text-xs sm:text-sm shadow-sm ${stack.color}`}
                 >
                   {stack.stack}
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
         ))}
       </Header>
 
@@ -129,8 +146,13 @@ const MainPage = () => {
           {Object.entries(projects[activeProject])
             .slice(0, 6)
             .map(([name, project], i) => (
-              <div
-                className="relative h-35 w-70 md:h-45 md:w-90 rounded-2xl overflow-hidden cursor-pointer group"
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="relative h-35 w-70 md:h-45 md:w-90 rounded-2xl overflow-hidden cursor-pointer group shadow-lg hover:shadow-sky-500/20 transition-all duration-300 border border-slate-700/50 hover:border-sky-400/50"
                 key={i}
                 onClick={() =>
                   window.open(
@@ -184,7 +206,7 @@ const MainPage = () => {
                     )}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
         </div>
       </Header>
