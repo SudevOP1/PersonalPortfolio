@@ -565,7 +565,7 @@ const DataProvider = ({ children }) => {
     },
     Client: {
       DiamondRock: {
-        img: QY,
+        img: QYScreenshot,
         desc: "Full-stack development with Django APIs and React frontend integration",
         stacks: [
           "ReactJS",
