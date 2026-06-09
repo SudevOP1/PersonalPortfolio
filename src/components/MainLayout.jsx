@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import p5 from "p5";
 import { MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -10,11 +11,14 @@ const MainLayout = ({ children, classname }) => {
   let data = useData();
   let contacts = data.contacts;
 
+  const canvasRef = useRef(null);
+  const [size, setSize] = useState(50);
+  const sizeRef = useRef(size);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = (scrollTop / docHeight) * 100;
       setScrollProgress(progress);
     };
@@ -24,172 +28,71 @@ const MainLayout = ({ children, classname }) => {
   }, []);
 
   useEffect(() => {
-    const canvas = document.getElementById("bg-canvas");
-    const ctx = canvas.getContext("2d");
+    sizeRef.current = size;
+  }, [size]);
 
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-    canvas.width = width;
-    canvas.height = height;
+  useEffect(() => {
+    const sketch = (p) => {
+      let width;
+      let height;
+      let maxCellSize;
+      let maxSpacing;
 
-    const minV = 0.1;
-    const maxV = 0.5;
-    const minR = 1;
-    const maxR = 3;
-    const maxDistToConnect = 200;
-    const numOfParticles = 50;
-    const particles = [];
-    const bgColTop = "#000724";
-    const bgColBottom = "#000000";
-    const pointColor = "#000464";
+      let bgColor = "#000026ff";
+      let cellColor = "#000000ff";
 
-    function random(min, max) {
-      if (max === undefined) {
-        max = min;
-        min = 0;
-      }
-      return Math.random() * (max - min) + min;
-    }
-    function map(val, inMin, inMax, outMin, outMax) {
-      return ((val - inMin) / (inMax - inMin)) * (outMax - outMin) + outMin;
-    }
-    function dist(x1, y1, x2, y2) {
-      return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
-    }
+      p.setup = () => {
+        width = p.windowWidth;
+        height = p.windowHeight;
+        maxCellSize = 12;
+        maxSpacing = p.max(width, height) * 0.5;
 
-    class Vector {
-      constructor(x = 0, y = 0) {
-        this.x = x;
-        this.y = y;
-      }
-      add(other) {
-        this.x += other.x;
-        this.y += other.y;
-      }
-      set(x, y) {
-        this.x = x;
-        this.y = y;
-      }
-      limit(max) {
-        const mag = Math.sqrt(this.x ** 2 + this.y ** 2);
-        if (mag > max) {
-          this.x = (this.x / mag) * max;
-          this.y = (this.y / mag) * max;
-        }
-      }
-    }
+        p.createCanvas(width, height);
+        p.noStroke();
+      };
 
-    class Particle {
-      constructor(x, y, vx, vy, r) {
-        this.pos = new Vector(x, y);
-        this.vel = new Vector(vx, vy);
-        this.acc = new Vector();
-        this.rad = r;
-        this.col = 0;
-      }
-      update() {
-        const n = 0.02;
-        this.acc.set(random(-n, n), random(-n, n));
+      p.windowResized = () => {
+        width = p.windowWidth;
+        height = p.windowHeight;
+        maxSpacing = p.max(width, height) * 0.5;
+        p.resizeCanvas(width, height);
+      };
 
-        this.vel.add(this.acc);
-        this.pos.add(this.vel);
+      p.draw = () => {
+        p.background(cellColor);
 
-        this.vel.limit(0.5);
-        if (this.col < 255) this.col += 5;
-      }
-      show() {
-        ctx.fillStyle = pointColor;
-        ctx.beginPath();
-        ctx.arc(this.pos.x, this.pos.y, this.rad, 0, Math.PI * 2);
-        ctx.fill();
-      }
+        p.fill(bgColor);
+        p.rect(
+          p.mouseX - maxSpacing - maxCellSize,
+          p.mouseY - maxSpacing - maxCellSize,
+          2 * (maxSpacing + maxCellSize),
+          2 * (maxSpacing + maxCellSize),
+        );
 
-      connect(other) {
-        if (this !== other) {
-          const d = dist(this.pos.x, this.pos.y, other.pos.x, other.pos.y);
-          if (d < maxDistToConnect) {
-            const alpha = map(d, 0, maxDistToConnect, 1, 0); // 1 (solid) to 0 (transparent)
-            ctx.strokeStyle = `rgba(0, 4, 100, ${alpha})`;
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(this.pos.x, this.pos.y);
-            ctx.lineTo(other.pos.x, other.pos.y);
-            ctx.stroke();
+        let maxD = p.sqrt(maxSpacing * maxSpacing + maxCellSize * maxCellSize);
+        let minX = p.int(p.mouseX / maxCellSize) * maxCellSize - maxSpacing - 3 * maxCellSize;
+        let minY = p.int(p.mouseY / maxCellSize) * maxCellSize - maxSpacing - 3 * maxCellSize;
+        let maxX = p.int(p.mouseX / maxCellSize) * maxCellSize + maxSpacing + 3 * maxCellSize;
+        let maxY = p.int(p.mouseY / maxCellSize) * maxCellSize + maxSpacing + 3 * maxCellSize;
+
+        p.fill(cellColor);
+        for (let x = minX; x < maxX; x += maxCellSize) {
+          for (let y = minY; y < maxY; y += maxCellSize) {
+            let d = p.dist(x, y, p.mouseX, p.mouseY);
+            let cellSize = p.map(d, 0, maxD, 0, maxCellSize);
+            p.rect(x - cellSize / 2, y - cellSize / 2, cellSize, cellSize);
           }
         }
-      }
+      };
+    };
 
-      isVisible() {
-        return (
-          this.pos.x - this.rad >= 0 &&
-          this.pos.y - this.rad >= 0 &&
-          this.pos.x + this.rad <= width &&
-          this.pos.y + this.rad <= height
-        );
-      }
-    }
-
-    function createParticle() {
-      const v = random(minV, maxV);
-      const a = random(2 * Math.PI);
-      particles.push(
-        new Particle(
-          random(width),
-          random(height),
-          v * Math.cos(a),
-          v * Math.sin(a),
-          random(minR, maxR)
-        )
-      );
-    }
-
-    function killParticle(p) {
-      const index = particles.indexOf(p);
-      if (index !== -1) {
-        particles.splice(index, 1);
-      }
-    }
-
-    function draw() {
-      const gradient = ctx.createLinearGradient(0, 0, 0, height);
-      gradient.addColorStop(0, bgColTop);
-      gradient.addColorStop(1, bgColBottom);
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, width, height);
-
-      for (let p of particles) {
-        p.update();
-        for (let q of particles) p.connect(q);
-        p.show();
-        if (!p.isVisible()) {
-          killParticle(p);
-          createParticle();
-        }
-      }
-      requestAnimationFrame(draw);
-    }
-
-    window.addEventListener("resize", () => {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
-    });
-
-    // initialize particles
-    for (let i = 0; i < numOfParticles; i++) {
-      createParticle();
-    }
-
-    draw();
+    const p5Instance = new p5(sketch, canvasRef.current);
+    return () => p5Instance.remove();
   }, []);
 
   return (
     <>
-      <canvas
-        id="bg-canvas"
-        className="fixed top-0 left-0 w-screen h-screen z-[-1] pointer-events-none"
-      />
+      <div ref={canvasRef} className="fixed top-0 left-0 w-screen h-screen z-[-1] pointer-events-none" />
       <div className="min-h-screen font-[Rubik]">
         <div className="flex flex-col lg:flex-row text-white items-around">
           {/* left side */}
@@ -198,44 +101,48 @@ const MainLayout = ({ children, classname }) => {
               <motion.img
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
                 src={Sudev}
                 className="rounded-full w-35 sm:w-50 md:w-50 lg:w-50 shadow-2xl shadow-sky-500/20"
               />
-              <motion.h1 
+              <motion.h1
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-2xl sm:text-4xl text-slate-100 font-bold mt-3 capitalize">
+                transition={{ duration: 0.2, delay: 0.2 }}
+                className="text-2xl sm:text-4xl text-slate-100 font-bold mt-3 capitalize"
+              >
                 Sudev Dahitule
               </motion.h1>
-              <motion.h1 
+              <motion.h1
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-2xl font-semibold uppercase bg-linear-to-r from-sky-400 to-indigo-500 bg-clip-text text-transparent mt-1">
+                transition={{ duration: 0.2, delay: 0.3 }}
+                className="text-2xl font-semibold uppercase bg-linear-to-r from-sky-400 to-indigo-500 bg-clip-text text-transparent mt-1"
+              >
                 Full Stack Web Developer
               </motion.h1>
-              <motion.h1 
+              <motion.h1
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="text-lg text-slate-300 mt-2 font-semibold flex items-center gap-1">
+                transition={{ duration: 0.2, delay: 0.4 }}
+                className="text-lg text-slate-300 mt-2 font-semibold flex items-center gap-1"
+              >
                 <MapPin className="w-4 h-4" /> Mumbai, India
               </motion.h1>
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                className="text-md text-slate-300 mt-5 font-medium">
-                Coding enthusiast turning ideas into interactive experiences and
-                tools
+                transition={{ duration: 0.2, delay: 0.5 }}
+                className="text-md text-slate-300 mt-5 font-medium"
+              >
+                Coding enthusiast turning ideas into interactive experiences and tools
               </motion.p>
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                className="flex flex-row gap-4 mt-4">
+                transition={{ duration: 0.2, delay: 0.6 }}
+                className="flex flex-row gap-4 mt-4"
+              >
                 {contacts.map((btn, index) => (
                   <motion.a
                     whileHover={{ scale: 1.1, backgroundColor: "rgba(14, 165, 233, 0.2)" }}
@@ -243,18 +150,14 @@ const MainLayout = ({ children, classname }) => {
                     key={index}
                     href={btn.href}
                     target={btn.label === "Resume" ? "_self" : "_blank"}
-                    rel={
-                      btn.label === "Resume" ? undefined : "noopener noreferrer"
-                    }
+                    rel={btn.label === "Resume" ? undefined : "noopener noreferrer"}
                     download={btn.label === "Resume"}
                     className="flex gap-1 items-center px-3 py-2 rounded-full cursor-pointer transition
                       text-slate-300 bg-slate-500/20 hover:bg-slate-500/40 active:bg-slate-500/90
                       border border-white/60 hover:border-white backdrop-blur-xs"
                   >
                     {btn.icon}
-                    {btn.label && (
-                      <span className="pl-1 pr-2">{btn.label}</span>
-                    )}
+                    {btn.label && <span className="pl-1 pr-2">{btn.label}</span>}
                   </motion.a>
                 ))}
               </motion.div>
@@ -264,7 +167,7 @@ const MainLayout = ({ children, classname }) => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.2, delay: 0.4 }}
             className={`lg:flex-5 flex flex-col p-10 pt-0 md:p-30 md:pt-0
               lg:p-35 lg:pt-20 lg:pl-0 overflow-x-hidden ${classname}`}
           >

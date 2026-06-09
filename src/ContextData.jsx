@@ -56,12 +56,12 @@ const DataProvider = ({ children }) => {
     },
   ];
   let tagColors = {
-    amber: "bg-amber-600/10 text-amber-600 border border-amber-400/80",
-    lime: "bg-lime-600/10 text-lime-600 border border-lime-400/80",
-    cyan: "bg-cyan-600/10 text-cyan-600 border border-cyan-400/80",
-    pink: "bg-pink-600/10 text-pink-600 border border-pink-400/80",
-    red: "bg-red-600/10 text-red-600 border border-red-400/80",
-    fuchsia: "bg-fuchsia-600/10 text-fuchsia-600 border border-fuchsia-400/80",
+    amber: "bg-amber-500/10 text-amber-500 border border-amber-400/80",
+    lime: "bg-lime-500/10 text-lime-500 border border-lime-400/80",
+    cyan: "bg-cyan-500/10 text-cyan-500 border border-cyan-400/80",
+    pink: "bg-pink-500/10 text-pink-500 border border-pink-400/80",
+    red: "bg-red-500/10 text-red-500 border border-red-400/80",
+    fuchsia: "bg-fuchsia-500/10 text-fuchsia-500 border border-fuchsia-400/80",
   };
   let skills = {
     Languages: {
@@ -295,15 +295,7 @@ const DataProvider = ({ children }) => {
         "Built dynamic frontend pages in React, consuming APIs and managing state efficiently",
         "Worked across the full stack to implement features and improve platform performance",
       ],
-      stacks: [
-        "ReactJS",
-        "Django",
-        "Django REST Framework (DRF)",
-        "TailwindCSS",
-        "JavaScript",
-        "Git",
-        "Postman",
-      ],
+      stacks: ["ReactJS", "Django", "Django REST Framework (DRF)", "TailwindCSS", "JavaScript", "Git", "Postman"],
     },
     GOCO: {
       img: GOCO,
@@ -315,16 +307,7 @@ const DataProvider = ({ children }) => {
         "Worked on language design, parsing logic, and syntax validation for a simplified learning experience",
         "Developed the official website and browser-based IDE using modern web technologies",
       ],
-      stacks: [
-        "Java",
-        "JavaCC",
-        "Next.js",
-        "ReactJS",
-        "TailwindCSS",
-        "JavaScript",
-        "Git",
-        "VSCode",
-      ],
+      stacks: ["Java", "JavaCC", "Next.js", "ReactJS", "TailwindCSS", "JavaScript", "Git", "VSCode"],
     },
   };
   let projects = {
@@ -333,18 +316,7 @@ const DataProvider = ({ children }) => {
         completed: true,
         img: CertificateGenerator,
         desc: "Generates personalized certificates and sends them via email with QR code verification",
-        stacks: [
-          "Python",
-          "Django",
-          "HTML",
-          "CSS",
-          "JavaScript",
-          "Pillow",
-          "QR Codes",
-          "jinja2",
-          "pdfkit",
-          "Postman",
-        ],
+        stacks: ["Python", "Django", "HTML", "CSS", "JavaScript", "Pillow", "QR Codes", "jinja2", "pdfkit", "Postman"],
         links: [
           {
             name: "Code",
@@ -383,15 +355,7 @@ const DataProvider = ({ children }) => {
         completed: true,
         img: ImageToAscii,
         desc: "Transform images into stunningly detailed ASCII art using a full-stack web interface",
-        stacks: [
-          "ReactJS",
-          "Django",
-          "TailwindCSS",
-          "REST APIs",
-          "Python",
-          "Pillow",
-          "SQLite3",
-        ],
+        stacks: ["ReactJS", "Django", "TailwindCSS", "REST APIs", "Python", "Pillow", "SQLite3"],
         links: [
           { name: "Code", link: "https://github.com/SudevOP1/ImageToAsciiArt" },
           { name: "Live", link: "https://sudevop1.github.io/ImageToAsciiArt/" },
@@ -567,15 +531,7 @@ const DataProvider = ({ children }) => {
       DiamondRock: {
         img: QYScreenshot,
         desc: "Full-stack development with Django APIs and React frontend integration",
-        stacks: [
-          "ReactJS",
-          "Django",
-          "Django REST Framework (DRF)",
-          "TailwindCSS",
-          "JavaScript",
-          "Git",
-          "Postman",
-        ],
+        stacks: ["ReactJS", "Django", "Django REST Framework (DRF)", "TailwindCSS", "JavaScript", "Git", "Postman"],
         links: [
           { name: "Code", link: "" },
           { name: "Live", link: "https://diamondrock.in" },

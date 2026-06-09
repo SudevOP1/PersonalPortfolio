@@ -1,10 +1,9 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import MainPage from "./pages/MainPage"
-import Projects from "./pages/Projects"
-import DataProvider from "./ContextData.jsx"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainPage from "./pages/MainPage";
+import Projects from "./pages/Projects";
+import DataProvider from "./ContextData.jsx";
 
 function App() {
-
   return (
     <DataProvider>
       <BrowserRouter>
@@ -14,7 +13,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </DataProvider>
-  )
+  );
 }
 
-export default App
+export default App;
