@@ -40,7 +40,7 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.2, delay: i * 0.1 }}
-            whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(56, 189, 248, 0.1), 0 8px 10px -6px rgba(56, 189, 248, 0.1)" }}
+            whileHover={{ boxShadow: "0 20px 25px -5px rgba(56, 189, 248, 0.1), 0 8px 10px -6px rgba(56, 189, 248, 0.1)" }}
             key={i}
             className="w-full h-fit flex flex-col gap-5 p-5 pb-6 overflow-hidden max-w-300 group
               cursor-pointer rounded-2xl border border-slate-600/50 hover:border-sky-500/50 backdrop-blur-md bg-slate-900/40 shadow-xl transition-colors duration-300"
