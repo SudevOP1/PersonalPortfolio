@@ -6,6 +6,9 @@ import QY from "../src/assets/logos/QY.png";
 import GOCO from "../src/assets/logos/GOCO.png";
 import Resume from "../src/assets/Sudev_Dahitule_Resume.pdf";
 
+import LetsChess2 from "../src/assets/projects/LetsChess2.png";
+import BlogWritingAI from "../src/assets/projects/BlogWritingAI.png";
+import MinecraftClone from "../src/assets/projects/MinecraftClone.png";
 import CertificateGenerator from "../src/assets/projects/CertificateGenerator.png";
 import TypingGame from "../src/assets/projects/TypingGame.png";
 import SudokuSolver from "../src/assets/projects/SudokuSolver.png";
@@ -192,9 +195,24 @@ const DataProvider = ({ children }) => {
           link: "https://restfulapi.net/",
         },
         {
+          name: "WebSockets",
+          desc: "Real-time, bidirectional communication protocol between client and server.",
+          link: "https://en.wikipedia.org/wiki/WebSocket",
+        },
+        {
           name: "Google Gemini API",
           desc: "API to access Google's multimodal AI capabilities.",
           link: "https://ai.google.dev/",
+        },
+        {
+          name: "Groq API",
+          desc: "API for accessing large language models.",
+          link: "https://groq.com/",
+        },
+        {
+          name: "Ollama",
+          desc: "Platform for running large language models locally.",
+          link: "https://ollama.com/",
         },
         {
           name: "JSON Web Tokens (JWT)",
@@ -312,6 +330,46 @@ const DataProvider = ({ children }) => {
   };
   let projects = {
     Personal: {
+      "Minecraft Clone": {
+        completed: false,
+        img: MinecraftClone,
+        desc: "Recreating Minecraft, focusing on block mechanics, 3D rendering, and chunk generation",
+        stacks: ["Java", "OpenGL", "GLSL", "3D Graphics", "Procedural Generation", "LWJGL"],
+        links: [
+          {
+            name: "Code",
+            link: "https://github.com/SudevOP1/MinecraftClone",
+          },
+          { name: "Live", link: "" },
+        ],
+      },
+      BlogWritingAI: {
+        completed: true,
+        img: BlogWritingAI,
+        desc: "",
+        stacks: ["FastAPI", "Groq API", "Ollama", "ReactJS", "TailwindCSS", "JavaScript"],
+        links: [
+          {
+            name: "Code",
+            link: "https://github.com/SudevOP1/BlogWritingAI",
+          },
+          { name: "Live", link: "https://sudevop1.github.io/BlogWritingAI/" },
+        ],
+      },
+      LetsChess2: {
+        completed: false,
+        img: LetsChess2,
+        desc: "Real-time multiplayer chess with 2D board, piece movements, and online matchmaking",
+        stacks: ["Django", "ReactJS", "TailwindCSS", "WebSockets"],
+        links: [
+          {
+            name: "Code",
+            link: "https://github.com/SudevOP1/LetsChess2",
+          },
+          { name: "Live", link: "" },
+        ],
+      },
+      // "": {},
       "Certificate Generator": {
         completed: true,
         img: CertificateGenerator,
