@@ -130,6 +130,11 @@ const DataProvider = ({ children }) => {
           link: "https://fastapi.tiangolo.com/",
         },
         {
+          name: "Flask",
+          desc: "Lightweight Python framework for building web applications.",
+          link: "https://flask.palletsprojects.com/en/stable/",
+        },
+        {
           name: "JavaCC",
           desc: "Parser generator for building compilers and interpreters in Java.",
           link: "https://javacc.org/",
