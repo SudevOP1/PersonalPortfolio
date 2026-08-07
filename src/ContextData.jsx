@@ -69,216 +69,63 @@ const DataProvider = ({ children }) => {
   let skills = {
     Languages: {
       list: [
-        {
-          name: "Python",
-          desc: "High-level programming language used for web, automation, and data tasks.",
-          link: "https://www.python.org/",
-        },
-        {
-          name: "Java",
-          desc: "Object-oriented language widely used for building enterprise applications.",
-          link: "https://www.oracle.com/java/",
-        },
-        {
-          name: "C",
-          desc: "Low-level programming language ideal for systems and embedded development.",
-          link: "https://en.cppreference.com/w/c",
-        },
-        {
-          name: "HTML",
-          desc: "Standard markup language for creating web pages.",
-          link: "https://developer.mozilla.org/en-US/docs/Web/HTML",
-        },
-        {
-          name: "CSS",
-          desc: "Stylesheet language for designing and customizing web page layouts.",
-          link: "https://developer.mozilla.org/en-US/docs/Web/CSS",
-        },
-        {
-          name: "JavaScript",
-          desc: "Scripting language for interactive and dynamic web applications.",
-          link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-        },
-        {
-          name: "SQL",
-          desc: "Language used to manage and query relational databases.",
-          link: "https://www.w3schools.com/sql/",
-        },
+        { name: "Python", link: "https://www.python.org/" },
+        { name: "Java", link: "https://www.oracle.com/java/" },
+        { name: "JavaScript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+        { name: "C", link: "https://en.cppreference.com/w/c" },
+        { name: "HTML", link: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
+        { name: "CSS", link: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+        { name: "JavaScript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+        { name: "SQL", link: "https://www.w3schools.com/sql/" },
+        { name: "JavaCC", link: "https://javacc.github.io/javacc/" },
+        { name: "GLSL", link: "https://developer.mozilla.org/en-US/docs/Games/Techniques/3D_on_the_web/GLSL_Shaders" },
       ],
       color: tagColors["amber"],
     },
     Frameworks: {
       list: [
-        {
-          name: "ReactJS",
-          desc: "JavaScript library for building interactive user interfaces.",
-          link: "https://reactjs.org/",
-        },
-        {
-          name: "Django",
-          desc: "High-level Python framework for building secure web applications.",
-          link: "https://www.djangoproject.com/",
-        },
-        {
-          name: "Django REST Framework (DRF)",
-          desc: "Toolkit to build Web APIs using Django.",
-          link: "https://www.django-rest-framework.org/",
-        },
-        {
-          name: "FastAPI",
-          desc: "High-performance Python framework for building APIs.",
-          link: "https://fastapi.tiangolo.com/",
-        },
-        {
-          name: "Flask",
-          desc: "Lightweight Python framework for building web applications.",
-          link: "https://flask.palletsprojects.com/en/stable/",
-        },
-        {
-          name: "JavaCC",
-          desc: "Parser generator for building compilers and interpreters in Java.",
-          link: "https://javacc.org/",
-        },
-        {
-          name: "Next.js",
-          desc: "React framework for server-side rendering and full-stack web apps.",
-          link: "https://nextjs.org/",
-        },
-        {
-          name: "TailwindCSS",
-          desc: "Utility-first CSS framework for fast UI development.",
-          link: "https://tailwindcss.com/",
-        },
-        {
-          name: "Bootstrap",
-          desc: "Popular CSS framework for responsive and mobile-first web design.",
-          link: "https://getbootstrap.com/",
-        },
-        {
-          name: "Pygame",
-          desc: "Python library for game development and multimedia applications.",
-          link: "https://www.pygame.org/",
-        },
-        {
-          name: "Pillow",
-          desc: "Python Imaging Library used for opening, editing, and saving images.",
-          link: "https://python-pillow.org/",
-        },
-        {
-          name: "p5.js",
-          desc: "JavaScript library for creative coding and visual sketches.",
-          link: "https://p5js.org/",
-        },
-        {
-          name: "Processing",
-          desc: "Flexible software sketchbook and language for visual arts projects.",
-          link: "https://processing.org/",
-        },
-        {
-          name: "jinja2",
-          desc: "Templating engine for Python used in web frameworks like Flask and Django.",
-          link: "https://jinja.palletsprojects.com/",
-        },
-        {
-          name: "pdfkit",
-          desc: "Library to convert HTML to PDF using wkhtmltopdf.",
-          link: "https://pypi.org/project/pdfkit/",
-        },
-        {
-          name: "pytmx",
-          desc: "Library to load Tiled TMX map files for 2D games.",
-          link: "https://pypi.org/project/pytmx/",
-        },
+        { name: "FastAPI", link: "https://fastapi.tiangolo.com/" },
+        { name: "Django", link: "https://www.djangoproject.com/" },
+        { name: "DRF", link: "https://www.django-rest-framework.org/" },
+        { name: "Flask", link: "https://flask.palletsprojects.com/en/stable/" },
+        { name: "ReactJS", link: "https://reactjs.org/" },
+        { name: "Next.js", link: "https://nextjs.org/" },
+        { name: "Node.js", link: "https://nodejs.org/" },
+        { name: "TailwindCSS", link: "https://tailwindcss.com/" },
+        { name: "Bootstrap", link: "https://getbootstrap.com/" },
+        { name: "Pygame", link: "https://www.pygame.org/" },
+        { name: "Pillow", link: "https://python-pillow.org/" },
+        { name: "p5.js", link: "https://p5js.org/" },
+        { name: "Processing", link: "https://processing.org/" },
+        { name: "jinja2", link: "https://jinja.palletsprojects.com/" },
+        { name: "pdfkit", link: "https://pypi.org/project/pdfkit/" },
+        { name: "pytmx", link: "https://pypi.org/project/pytmx/" },
       ],
       color: tagColors["lime"],
     },
     Technologies: {
       list: [
-        {
-          name: "REST APIs",
-          desc: "Architectural style for building scalable web services.",
-          link: "https://restfulapi.net/",
-        },
-        {
-          name: "WebSockets",
-          desc: "Real-time, bidirectional communication protocol between client and server.",
-          link: "https://en.wikipedia.org/wiki/WebSocket",
-        },
-        {
-          name: "Google Gemini API",
-          desc: "API to access Google's multimodal AI capabilities.",
-          link: "https://ai.google.dev/",
-        },
-        {
-          name: "Groq API",
-          desc: "API for accessing large language models.",
-          link: "https://groq.com/",
-        },
-        {
-          name: "Ollama",
-          desc: "Platform for running large language models locally.",
-          link: "https://ollama.com/",
-        },
-        {
-          name: "JSON Web Tokens (JWT)",
-          desc: "Standard for securely transmitting data between parties as a JSON object.",
-          link: "https://jwt.io/",
-        },
-        {
-          name: "Google Book API",
-          desc: "API for searching and retrieving book data from Google Books.",
-          link: "https://developers.google.com/books",
-        },
-        {
-          name: "ImgFlip API",
-          desc: "API to generate and manage memes using ImgFlip.",
-          link: "https://api.imgflip.com/",
-        },
-        {
-          name: "SQLite3",
-          desc: "Lightweight embedded database used in applications and development.",
-          link: "https://www.sqlite.org/index.html",
-        },
+        { name: "REST APIs", link: "https://restfulapi.net/" },
+        { name: "WebSockets", link: "https://en.wikipedia.org/wiki/WebSocket" },
+        { name: "Google Gemini API", link: "https://ai.google.dev/" },
+        { name: "Groq API", link: "https://groq.com/" },
+        { name: "Ollama", link: "https://ollama.com/" },
+        { name: "JSON Web Tokens (JWT)", link: "https://jwt.io/" },
+        { name: "Google Book API", link: "https://developers.google.com/books" },
+        { name: "ImgFlip API", link: "https://api.imgflip.com/" },
+        { name: "SQLite3", link: "https://www.sqlite.org/index.html" },
       ],
       color: tagColors["cyan"],
     },
     "Developer Tools": {
       list: [
-        {
-          name: "VSCode",
-          desc: "Popular code editor with support for extensions and debugging.",
-          link: "https://code.visualstudio.com/",
-        },
-        {
-          name: "Git",
-          desc: "Version control system for tracking changes in source code.",
-          link: "https://git-scm.com/",
-        },
-        {
-          name: "Figma",
-          desc: "Collaborative tool for UI/UX design and prototyping.",
-          link: "https://figma.com/",
-        },
-        {
-          name: "MySQL",
-          desc: "Open-source relational database management system.",
-          link: "https://www.mysql.com/",
-        },
-        {
-          name: "Postman",
-          desc: "API development and testing tool with a user-friendly interface.",
-          link: "https://www.postman.com/",
-        },
-        {
-          name: "AutoCAD",
-          desc: "Software for 2D and 3D computer-aided design (CAD).",
-          link: "https://www.autodesk.in/products/autocad/overview",
-        },
-        {
-          name: "Blender",
-          desc: "Open-source software for 3D modeling, animation, and rendering.",
-          link: "https://www.blender.org/",
-        },
+        { name: "VSCode", link: "https://code.visualstudio.com/" },
+        { name: "Git", link: "https://git-scm.com/" },
+        { name: "Figma", link: "https://figma.com/" },
+        { name: "MySQL", link: "https://www.mysql.com/" },
+        { name: "Postman", link: "https://www.postman.com/" },
+        { name: "AutoCAD", link: "https://www.autodesk.in/products/autocad/overview" },
+        { name: "Blender", link: "https://www.blender.org/" },
       ],
       color: tagColors["pink"],
     },
@@ -296,7 +143,7 @@ const DataProvider = ({ children }) => {
       stacks: [
         "ReactJS",
         "Django",
-        "Django REST Framework (DRF)",
+        "DRF",
         "REST APIs",
         "Google Gemini API",
         "JSON Web Tokens (JWT)",
@@ -318,7 +165,7 @@ const DataProvider = ({ children }) => {
         "Built dynamic frontend pages in React, consuming APIs and managing state efficiently",
         "Worked across the full stack to implement features and improve platform performance",
       ],
-      stacks: ["ReactJS", "Django", "Django REST Framework (DRF)", "TailwindCSS", "JavaScript", "Git", "Postman"],
+      stacks: ["ReactJS", "Django", "DRF", "TailwindCSS", "JavaScript", "Git", "Postman"],
     },
     GOCO: {
       img: GOCO,
@@ -365,7 +212,7 @@ const DataProvider = ({ children }) => {
         completed: false,
         img: LetsChess2,
         desc: "Real-time multiplayer chess with 2D board, piece movements, and online matchmaking",
-        stacks: ["Django", "ReactJS", "TailwindCSS", "WebSockets"],
+        stacks: ["FastAPI", "ReactJS", "TailwindCSS", "WebSockets", "MongoDB"],
         links: [
           {
             name: "Code",
@@ -428,16 +275,7 @@ const DataProvider = ({ children }) => {
         completed: true,
         img: AiFitnessPlanner,
         desc: "Generate personalized fitness routines using an intelligent AI-powered workout planner",
-        stacks: [
-          "ReactJS",
-          "Django",
-          "Django REST Framework (DRF)",
-          "Google Gemini API",
-          "SQLite3",
-          "JSON Web Tokens (JWT)",
-          "REST APIs",
-          "Postman",
-        ],
+        stacks: ["ReactJS", "Django", "DRF", "Google Gemini API", "SQLite3", "JSON Web Tokens (JWT)", "REST APIs", "Postman"],
         links: [
           {
             name: "Code",
@@ -468,7 +306,7 @@ const DataProvider = ({ children }) => {
           "Django",
           "TailwindCSS",
           "PostgreSQL",
-          "Django REST Framework (DRF)",
+          "DRF",
           "JSON Web Tokens (JWT)",
           "REST APIs",
           "Pillow",
@@ -594,7 +432,7 @@ const DataProvider = ({ children }) => {
       DiamondRock: {
         img: QYScreenshot,
         desc: "Full-stack development with Django APIs and React frontend integration",
-        stacks: ["ReactJS", "Django", "Django REST Framework (DRF)", "TailwindCSS", "JavaScript", "Git", "Postman"],
+        stacks: ["ReactJS", "Django", "DRF", "TailwindCSS", "JavaScript", "Git", "Postman"],
         links: [
           { name: "Code", link: "" },
           { name: "Live", link: "https://diamondrock.in" },
