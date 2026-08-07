@@ -1,19 +1,73 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainPage from "./pages/MainPage";
-import Projects from "./pages/Projects";
-import DataProvider from "./ContextData.jsx";
+import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
-function App() {
+import DataProvider from "./ContextData.jsx";
+import Home from "./pages/Home.jsx";
+import Projects from "./pages/Projects.jsx";
+import Cursor from "./components/Cursor.jsx";
+import Nav from "./components/Nav.jsx";
+import Preloader from "./components/Preloader.jsx";
+import PageTransition from "./components/PageTransition.jsx";
+import { useSmoothScroll } from "./lib/smoothScroll.js";
+
+const INTRO_KEY = "sd-intro-played";
+
+const Shell = () => {
+  const location = useLocation();
+  const [introDone, setIntroDone] = useState(() => {
+    if (typeof window === "undefined") return true;
+    return sessionStorage.getItem(INTRO_KEY) === "1" || location.pathname !== "/";
+  });
+
+  useSmoothScroll();
+
+  // every route change starts at the top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  const finishIntro = () => {
+    sessionStorage.setItem(INTRO_KEY, "1");
+    setIntroDone(true);
+  };
+
   return (
-    <DataProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/projects" element={<Projects />} />
+    <>
+      {!introDone && <Preloader onDone={finishIntro} />}
+      <Cursor />
+      <Nav />
+
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route
+            path="/"
+            element={
+              <PageTransition>
+                <Home ready={introDone} />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/projects"
+            element={
+              <PageTransition>
+                <Projects />
+              </PageTransition>
+            }
+          />
         </Routes>
-      </BrowserRouter>
-    </DataProvider>
+      </AnimatePresence>
+    </>
   );
-}
+};
+
+const App = () => (
+  <DataProvider>
+    <BrowserRouter>
+      <Shell />
+    </BrowserRouter>
+  </DataProvider>
+);
 
 export default App;

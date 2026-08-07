@@ -1,0 +1,69 @@
+import { motion, useReducedMotion } from "framer-motion";
+
+/**
+ * Text that climbs out of a mask, word by word or character by character.
+ * Words are never broken across lines: each word is its own overflow-hidden box.
+ */
+const SplitText = ({
+  text,
+  by = "word",
+  className = "",
+  delay = 0,
+  stagger = 0.035,
+  duration = 0.9,
+  once = true,
+  animate: forceAnimate = null, // null = trigger on scroll, true/false = controlled
+  as: Tag = "span",
+}) => {
+  const reduce = useReducedMotion();
+  const words = String(text).split(" ");
+
+  const container = {
+    hidden: {},
+    visible: { transition: { staggerChildren: reduce ? 0 : stagger, delayChildren: delay } },
+  };
+
+  const piece = {
+    hidden: { y: "115%", rotate: reduce ? 0 : 4 },
+    visible: {
+      y: "0%",
+      rotate: 0,
+      transition: { duration: reduce ? 0.001 : duration, ease: [0.16, 1, 0.3, 1] },
+    },
+  };
+
+  const MotionTag = motion.create(Tag);
+  const trigger =
+    forceAnimate === null
+      ? { whileInView: "visible", viewport: { once, margin: "-12% 0px -12% 0px" } }
+      : { animate: forceAnimate ? "visible" : "hidden" };
+
+  return (
+    <MotionTag
+      className={`inline-block ${className}`}
+      variants={container}
+      initial="hidden"
+      {...trigger}
+      aria-label={text}
+    >
+      {words.map((word, wi) => (
+        <span key={wi} className="inline-block overflow-hidden align-bottom pb-[0.12em]" aria-hidden>
+          {by === "char" ? (
+            word.split("").map((ch, ci) => (
+              <motion.span key={ci} variants={piece} className="inline-block will-change-transform">
+                {ch}
+              </motion.span>
+            ))
+          ) : (
+            <motion.span variants={piece} className="inline-block will-change-transform">
+              {word}
+            </motion.span>
+          )}
+          {wi < words.length - 1 && <span className="inline-block">&nbsp;</span>}
+        </span>
+      ))}
+    </MotionTag>
+  );
+};
+
+export default SplitText;

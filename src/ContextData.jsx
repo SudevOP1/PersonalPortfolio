@@ -31,6 +31,30 @@ export function useData() {
 }
 
 const DataProvider = ({ children }) => {
+  let profile = {
+    name: "Sudev Dahitule",
+    firstName: "Sudev",
+    role: "Full-Stack Developer",
+    roleLines: ["Full", "Stack", "Developer"],
+    location: "Mumbai, India",
+    email: "sudevdahitule06@gmail.com",
+    tagline: "Coding enthusiast turning ideas into interactive experiences and tools",
+    available: true,
+    since: "2026",
+    marquee: [
+      "Available for work",
+      "Full-stack developer",
+      "Django · FastAPI · React",
+      "Mumbai, India",
+      "Open to collaborations",
+    ],
+    stats: [
+      { value: "20+", label: "Projects shipped" },
+      { value: "3", label: "Dev roles" },
+      { value: "40+", label: "Tools & tech" },
+      { value: "∞", label: "Cups of chai" },
+    ],
+  };
   let aboutMeText = [
     "Hi! I'm Sudev, a full-stack developer who loves building creative and functional applications.",
     "From crafting sleek UIs with React and Tailwind to designing robust APIs with Django and DRF, I enjoy bringing ideas to life through code.",
@@ -452,6 +476,7 @@ const DataProvider = ({ children }) => {
   return (
     <dataContext.Provider
       value={{
+        profile: profile,
         aboutMeText: aboutMeText,
         contacts: contacts,
         skills: skills,
