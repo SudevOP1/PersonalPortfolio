@@ -57,7 +57,7 @@ const About = () => {
             src={Sudev}
             alt={profile.name}
             loading="lazy"
-            className="h-full w-full object-cover grayscale hover:grayscale-0 transition duration-500 ease-in-out"
+            className="h-full w-full object-cover grayscale-0 md:grayscale hover:grayscale-0 transition duration-500 ease-in-out"
             data-cursor="view"
             data-cursor-label="Hi"
           />
