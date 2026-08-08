@@ -28,14 +28,14 @@ const Home = ({ ready = true }) => {
     <Layout>
       <Hero ready={ready} />
 
-      <div className="border-line bg-ink/60 border-y backdrop-blur-sm">
+      {/* <div className="border-line bg-ink/60 border-y backdrop-blur-sm">
         <Marquee
           items={profile.marquee}
           duration={30}
           className="label py-4 text-[0.65rem] text-bone/70"
           separator="◆"
         />
-      </div>
+      </div> */}
 
       <About />
       <Work />
