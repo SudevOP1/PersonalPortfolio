@@ -46,7 +46,7 @@ const Skills = () => {
                 <p className="label text-[0.55rem]">{String(unique.length).padStart(2, "0")}</p>
               </div>
 
-              <p className="relative flex flex-col gap-2">
+              <p className="relative flex flex-col gap-2 md:gap-5">
                 {unique.map((skill, si) => {
                   const Icon = skillIcons[skill.name];
 

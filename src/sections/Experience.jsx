@@ -11,16 +11,22 @@ const ExpCard = ({ name, exp, index, total }) => {
 
   // card shrinks and dims as the next one slides over it
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 120px", "end 220px"] });
-  const scale = useTransform(scrollYProgress, [0, 1], [1, reduce ? 1 : 0.9]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, reduce ? 1 : 0.25]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, reduce ? 1 : 0.8]);
 
   return (
     <div ref={ref} className="sticky" style={{ top: `${96 + index * 22}px` }}>
       <motion.article
-        style={{ scale, opacity }}
+        style={{ scale }}
         className="bg-ink-2/90 border-line hover:border-acid/40 mb-6 overflow-hidden border backdrop-blur-md transition-colors"
       >
-        <div className="grid grid-cols-1 gap-8 p-6 md:grid-cols-12 md:gap-6 md:p-10">
+        <a
+          href={exp.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="grid grid-cols-1 gap-8 p-6 md:grid-cols-12 md:gap-6 md:p-10 group"
+          data-cursor="view"
+          data-cursor-label="Visit"
+        >
           {/* identity */}
           <div className="md:col-span-5">
             <div className="mb-6 flex items-center gap-4">
@@ -35,18 +41,7 @@ const ExpCard = ({ name, exp, index, total }) => {
               </div>
             </div>
 
-            <a
-              href={exp.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-block"
-              data-cursor="link"
-              data-cursor-label="Visit"
-            >
-              <h3 className="display text-bone group-hover:text-acid text-[clamp(1.8rem,4vw,3.4rem)] transition-colors">
-                {name}
-              </h3>
-            </a>
+            <h3 className="display text-bone group-hover:text-acid text-[clamp(1.8rem,4vw,3.4rem)] transition-colors">{name}</h3>
             <p className="text-bone/60 mt-2 text-sm md:text-base">{exp.role}</p>
           </div>
 
@@ -69,7 +64,7 @@ const ExpCard = ({ name, exp, index, total }) => {
               ))}
             </div>
           </div>
-        </div>
+        </a>
       </motion.article>
     </div>
   );
