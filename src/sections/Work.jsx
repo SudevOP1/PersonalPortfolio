@@ -141,7 +141,7 @@ const Work = () => {
           <div className="bg-line h-px w-full">
             <motion.div className="bg-acid h-px" style={{ width: progress }} />
           </div>
-          <p className="label mt-3 text-[0.55rem]">Scroll to move sideways</p>
+          <p className="label mt-3 text-[0.55rem]">Scroll down to move sideways</p>
         </div>
       </div>
     </section>
