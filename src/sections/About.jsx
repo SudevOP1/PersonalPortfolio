@@ -32,11 +32,11 @@ const About = () => {
       <div className="mt-16 grid grid-cols-1 gap-12 md:mt-24 md:grid-cols-12 md:gap-8">
         {/* image column */}
         <div className="md:col-span-4">
-          <motion.div
+          {/* <motion.div
             className="relative aspect-[4/5] overflow-hidden"
-            initial={{ clipPath: "inset(100% 0 0 0)" }}
-            whileInView={{ clipPath: "inset(0% 0 0 0)" }}
-            viewport={{ once: true, margin: "-10%" }}
+            initial={{ opacity: 0, clipPath: "inset(100% 0% 0% 0%)" }}
+            whileInView={{ opacity: 1, clipPath: "inset(0% 0% 0% 0%)" }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
             data-cursor="view"
             data-cursor-label="Sudev"
@@ -52,7 +52,15 @@ const About = () => {
               <span className="label text-bone">{profile.firstName}</span>
               <span className="label text-acid">{profile.location}</span>
             </div>
-          </motion.div>
+          </motion.div> */}
+          <motion.img
+            src={Sudev}
+            alt={profile.name}
+            loading="lazy"
+            className="h-full w-full object-cover grayscale hover:grayscale-0 transition duration-500 ease-in-out"
+            data-cursor="view"
+            data-cursor-label="Hi"
+          />
         </div>
 
         {/* copy column */}

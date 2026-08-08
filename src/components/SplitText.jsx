@@ -47,7 +47,7 @@ const SplitText = ({
       aria-label={text}
     >
       {words.map((word, wi) => (
-        <span key={wi} className="inline-block overflow-hidden align-bottom pb-[0.12em]" aria-hidden>
+        <span key={wi} className="inline-block overflow-hidden align-bottom pb-[0.12em] whitespace-nowrap" aria-hidden>
           {by === "char" ? (
             word.split("").map((ch, ci) => (
               <motion.span key={ci} variants={piece} className="inline-block will-change-transform">

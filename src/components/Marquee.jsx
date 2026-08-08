@@ -18,7 +18,7 @@ const Marquee = ({ items, duration = 26, reverse = false, className = "", separa
     <div className="flex shrink-0 items-center whitespace-nowrap">
       {items.map((item, i) => (
         <span key={i} className="flex items-center">
-          <span className="px-6">{item}</span>
+          <span className="px-6 text-[0.5em] ">{item}</span>
           <span className="text-acid px-2 text-[0.5em] opacity-70">{separator}</span>
         </span>
       ))}

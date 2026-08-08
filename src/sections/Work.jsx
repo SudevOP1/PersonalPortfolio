@@ -99,7 +99,7 @@ const Work = () => {
                     src={project.img || InProgress}
                     alt={project.name}
                     loading="lazy"
-                    className="h-full w-full object-cover grayscale transition-[filter,transform] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 group-hover:grayscale-0"
+                    className="h-full w-full object-cover grayscale transition duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 group-hover:grayscale-0"
                   />
                   <div className="bg-acid absolute bottom-0 left-0 h-[3px] w-0 transition-[width] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full" />
                 </div>

@@ -35,21 +35,6 @@ const Hero = ({ ready }) => {
               Portfolio — {profile.since}
             </motion.p>
           </div>
-
-          <div className="overflow-hidden">
-            <motion.p
-              className="label flex items-center gap-2"
-              initial={{ y: "120%" }}
-              animate={ready ? { y: 0 } : {}}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.18 }}
-            >
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="bg-acid absolute inline-flex h-full w-full animate-ping rounded-full opacity-75" />
-                <span className="bg-acid relative inline-flex h-1.5 w-1.5 rounded-full" />
-              </span>
-              {profile.available ? "Available for work" : "Currently booked"}
-            </motion.p>
-          </div>
         </div>
 
         {/* the headline */}
@@ -62,37 +47,13 @@ const Hero = ({ ready }) => {
             transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
           />
 
-          <h1 className="display text-bone text-[clamp(3.2rem,15.5vw,15rem)]">
-            <SplitText text="Full—Stack" by="char" animate={ready} delay={0.28} stagger={0.028} className="block" />
-            <span className="flex flex-wrap items-baseline gap-x-[0.12em]">
-              <SplitText text="Developer" by="char" animate={ready} delay={0.42} stagger={0.028} />
-              <motion.span
-                className="text-acid text-[0.18em] leading-none"
-                initial={{ opacity: 0, scale: 0.3, rotate: -40 }}
-                animate={ready ? { opacity: 1, scale: 1, rotate: 0 } : {}}
-                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 1 }}
-              >
-                ®
-              </motion.span>
+          <h1 className="display text-bone text-[14vw] flex flex-col gap-1">
+            <SplitText text="Full—Stack" by="char" animate={ready} delay={0.3} stagger={0.035} className="block" />
+            <span className="flex flex-row">
+              <SplitText text="Developer" by="char" animate={ready} delay={0.6} stagger={0.035} />
+              <SplitText text="." by="char" className="text-acid" animate={ready} delay={1} stagger={0.035} />
             </span>
           </h1>
-
-          {/* portrait, clipped open */}
-          <motion.div
-            className="absolute top-0 right-0 hidden h-40 w-32 overflow-hidden lg:block xl:h-52 xl:w-42"
-            initial={{ clipPath: "inset(0 0 100% 0)" }}
-            animate={ready ? { clipPath: "inset(0 0 0% 0)" } : {}}
-            transition={{ duration: 1.1, ease: [0.76, 0, 0.24, 1], delay: 0.75 }}
-          >
-            <motion.img
-              src={Sudev}
-              alt={profile.name}
-              className="h-full w-full object-cover grayscale transition-[filter] duration-700 hover:grayscale-0"
-              style={{ y: portraitY, scale: portraitScale }}
-              data-cursor="view"
-              data-cursor-label="Hi"
-            />
-          </motion.div>
         </div>
 
         {/* bottom meta */}
