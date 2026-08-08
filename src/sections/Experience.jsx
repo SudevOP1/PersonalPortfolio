@@ -17,7 +17,7 @@ const ExpCard = ({ name, exp, index, total }) => {
     <div ref={ref} className="sticky" style={{ top: `${96 + index * 22}px` }}>
       <motion.article
         style={{ scale }}
-        className="bg-ink-2/90 border-line hover:border-acid/40 mb-6 overflow-hidden border backdrop-blur-md transition-colors"
+        className="bg-ink-2/95 border-line hover:border-acid/40 mb-6 overflow-hidden border transition-colors"
       >
         <a
           href={exp.link}
