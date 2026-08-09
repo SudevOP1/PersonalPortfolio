@@ -53,20 +53,21 @@ const Skills = () => {
                   const Icon = skillIcons[skill.name];
 
                   return (
-                    <span key={skill.name} className="group inline-flex items-baseline">
-                      <a
-                        href={skill.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="display text-bone/75 hover:text-acid inline-flex items-center gap-2 text-[clamp(1.2rem,2.6vw,1.75rem)] leading-none transition-colors duration-300 py-1 md:py-3"
-                        data-cursor="link"
-                      >
+                    <a
+                      href={skill.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-cursor="link"
+                      key={skill.name}
+                      className="group inline-flex items-baseline"
+                    >
+                      <span className="display text-bone/75 group-hover:text-acid inline-flex items-center gap-2 text-[clamp(1.2rem,2.6vw,1.75rem)] leading-none transition-colors duration-300 py-1 md:py-3">
                         {Icon && <Icon className="h-[0.8em] w-[0.8em] shrink-0" />}
                         {skill.name}
                         <ArrowUpRight className="h-[0.7em] w-[0.7em] shrink-0 -translate-x-1 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" />
-                      </a>
+                      </span>
                       {si < unique.length - 1 && <span className="text-line mx-2 font-mono text-xs">/</span>}
-                    </span>
+                    </a>
                   );
                 })}
               </p>
