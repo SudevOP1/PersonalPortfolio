@@ -48,7 +48,7 @@ const Hero = ({ ready }) => {
           />
 
           <h1 className="display text-bone text-[14vw] flex flex-col gap-1">
-            <SplitText text="Full—Stack" by="char" animate={ready} delay={0.3} stagger={0.035} className="block" />
+            <SplitText text="Software" by="char" animate={ready} delay={0.3} stagger={0.035} className="block" />
             <span className="flex flex-row">
               <SplitText text="Developer" by="char" animate={ready} delay={0.6} stagger={0.035} />
               <SplitText text="." by="char" className="text-acid" animate={ready} delay={1} stagger={0.035} />
