@@ -40,7 +40,6 @@ const DataProvider = ({ children }) => {
     email: "sudevdahitule06@gmail.com",
     tagline: "Coding enthusiast turning ideas into interactive experiences and tools",
     available: true,
-    since: "2026",
     stats: [
       { value: "20+", label: "Projects shipped" },
       { value: "4", label: "Dev roles" },

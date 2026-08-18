@@ -69,7 +69,7 @@ const Preloader = ({ onDone }) => {
           >
             <div className="flex items-start justify-between">
               <span className="label">Sudev Dahitule</span>
-              <span className="label">Portfolio — 2026</span>
+              <span className="label">Portfolio</span>
             </div>
 
             <div className="flex items-end justify-between gap-6">

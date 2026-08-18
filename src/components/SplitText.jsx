@@ -25,6 +25,7 @@ const SplitText = ({
   once = true,
   animate: forceAnimate = null, // null = trigger on scroll, true/false = controlled
   as: Tag = "span",
+  interactive = false, // hover a letter -> instant acid, slow drain back
 }) => {
   const reduce = useReducedMotion();
   const words = String(text).split(" ");
@@ -62,7 +63,21 @@ const SplitText = ({
           {by === "char" ? (
             word.split("").map((ch, ci) => (
               <motion.span key={ci} variants={piece} className="inline-block will-change-transform">
-                {ch}
+                {interactive ? (
+                  <span className="relative inline-block">
+                    {ch}
+                    <span
+                      aria-hidden
+                      className="text-acid absolute inset-0 opacity-0
+                        [transition:opacity_1.8s_var(--ease-out-expo)]
+                        hover:opacity-100 hover:[transition:opacity_0s]"
+                    >
+                      {ch}
+                    </span>
+                  </span>
+                ) : (
+                  ch
+                )}
               </motion.span>
             ))
           ) : (

@@ -36,7 +36,7 @@ const Hero = ({ ready }) => {
               animate={ready ? { y: 0 } : {}}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
             >
-              Portfolio — {profile.since}
+              Portfolio
             </motion.p>
           </div>
         </div>
