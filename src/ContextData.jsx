@@ -4,7 +4,6 @@ import { FileText, Github, Linkedin, Mail } from "lucide-react";
 import UC from "../src/assets/logos/UC.png";
 import QY from "../src/assets/logos/QY.png";
 import GOCO from "../src/assets/logos/GOCO.png";
-import Resume from "../src/assets/Sudev_Dahitule_Resume.pdf";
 
 import LetsChess2 from "../src/assets/projects/LetsChess2.png";
 import BlogWritingAI from "../src/assets/projects/BlogWritingAI.png";
@@ -64,7 +63,7 @@ const DataProvider = ({ children }) => {
     {
       icon: <FileText className="w-5 h-5 ml-1" />,
       label: "Resume",
-      href: Resume,
+      href: "https://drive.google.com/file/d/1SH0_c00_9PXr22J-cqeVEapGZBMH8Jk4/view?usp=sharing",
     },
     {
       icon: <Linkedin className="w-5 h-5" />,

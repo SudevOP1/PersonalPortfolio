@@ -17,7 +17,7 @@ const handleFor = (href = "") => {
   if (href.includes("linkedin")) return "/in/Sudev-Dahitule";
   if (href.includes("github")) return "@SudevOP1";
   if (href.startsWith("mailto:")) return href.replace("mailto:", "");
-  return "PDF — 120kb";
+  return "View on Drive";
 };
 
 const Contact = () => {
@@ -69,15 +69,13 @@ const Contact = () => {
       <div className="mt-16 md:mt-24">
         {contacts.map((c, i) => {
           const label = nameFor(c.href);
-          const isResume = label === "Resume";
 
           return (
             <Reveal key={i} delay={i * 0.05} y={24}>
               <a
                 href={c.href}
-                target={isResume ? "_self" : "_blank"}
-                rel={isResume ? undefined : "noopener noreferrer"}
-                download={isResume || undefined}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group border-line hover:border-acid/50 flex items-center justify-between gap-6 border-t py-6 transition-colors md:py-8"
                 data-cursor="link"
               >
