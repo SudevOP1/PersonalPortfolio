@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
@@ -9,7 +9,7 @@ import Cursor from "./components/Cursor.jsx";
 import Nav from "./components/Nav.jsx";
 import Preloader from "./components/Preloader.jsx";
 import PageTransition from "./components/PageTransition.jsx";
-import { useSmoothScroll } from "./lib/smoothScroll.js";
+import { useSmoothScroll, resetScroll } from "./lib/smoothScroll.js";
 
 const INTRO_KEY = "sd-intro-played";
 
@@ -22,9 +22,14 @@ const Shell = () => {
 
   useSmoothScroll();
 
-  // every route change starts at the top
+  // don't let the browser restore the old offset on reload / back
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if ("scrollRestoration" in window.history) window.history.scrollRestoration = "manual";
+  }, []);
+
+  // every route change starts at the top
+  useLayoutEffect(() => {
+    resetScroll();
   }, [location.pathname]);
 
   const finishIntro = () => {

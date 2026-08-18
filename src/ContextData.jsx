@@ -15,6 +15,7 @@ import NQueensVisualizer from "../src/assets/projects/NQueensVisualizer.png";
 import ImageToAscii from "../src/assets/projects/ImageToAscii.png";
 import AiFitnessPlanner from "../src/assets/projects/AiFitnessPlanner.png";
 import QYScreenshot from "../src/assets/projects/QYScreenshot.png";
+import GOCOScreenshot from "../src/assets/projects/GOCOScreenshot.png";
 import GeminiClone from "../src/assets/projects/GeminiClone.png";
 import MemeGenerator from "../src/assets/projects/MemeGenerator.png";
 import MonsterShooter from "../src/assets/projects/Games/MonsterShooter.png";
@@ -232,10 +233,10 @@ const DataProvider = ({ children }) => {
           { name: "Live", link: "" },
         ],
       },
-      BlogWritingAI: {
+      "Blog Writing AI": {
         completed: true,
         img: BlogWritingAI,
-        desc: "",
+        desc: "Multi-agent LangGraph pipeline that researches a topic, plans it, and writes a Markdown blog",
         stacks: ["FastAPI", "Groq API", "Ollama", "ReactJS", "TailwindCSS", "JavaScript"],
         links: [
           {
@@ -245,7 +246,7 @@ const DataProvider = ({ children }) => {
           { name: "Live", link: "https://sudevop1.github.io/BlogWritingAI/" },
         ],
       },
-      LetsChess2: {
+      "Lets Chess 2": {
         completed: false,
         img: LetsChess2,
         desc: "Real-time multiplayer chess with 2D board, piece movements, and online matchmaking",
@@ -272,42 +273,42 @@ const DataProvider = ({ children }) => {
           { name: "Live", link: "" },
         ],
       },
-      "Sudoku Solver": {
-        completed: true,
-        img: SudokuSolver,
-        desc: "Backtracking-based Sudoku solver with interactive visual grid",
-        stacks: ["ReactJS", "TailwindCSS", "JavaScript", "Backtracking"],
-        links: [
-          { name: "Code", link: "https://github.com/SudevOP1/SudokuSolver" },
-          { name: "Live", link: "https://sudevop1.github.io/SudokuSolver/" },
-        ],
-      },
-      "N Queens Visualizer": {
-        completed: true,
-        img: NQueensVisualizer,
-        desc: "Optimized visualization of all N-Queens solutions with interactive filters and statistics",
-        stacks: ["ReactJS", "TailwindCSS", "JavaScript", "Backtracking"],
-        links: [
-          {
-            name: "Code",
-            link: "https://github.com/SudevOP1/NQueensVisualizer",
-          },
-          {
-            name: "Live",
-            link: "https://sudevop1.github.io/NQueensVisualizer/",
-          },
-        ],
-      },
-      "Image to Ascii Art": {
-        completed: true,
-        img: ImageToAscii,
-        desc: "Transform images into stunningly detailed ASCII art using a full-stack web interface",
-        stacks: ["ReactJS", "Django", "TailwindCSS", "REST APIs", "Python", "Pillow", "SQLite3"],
-        links: [
-          { name: "Code", link: "https://github.com/SudevOP1/ImageToAsciiArt" },
-          { name: "Live", link: "https://sudevop1.github.io/ImageToAsciiArt/" },
-        ],
-      },
+      // "Sudoku Solver": {
+      //   completed: true,
+      //   img: SudokuSolver,
+      //   desc: "Backtracking-based Sudoku solver with interactive visual grid",
+      //   stacks: ["ReactJS", "TailwindCSS", "JavaScript", "Backtracking"],
+      //   links: [
+      //     { name: "Code", link: "https://github.com/SudevOP1/SudokuSolver" },
+      //     { name: "Live", link: "https://sudevop1.github.io/SudokuSolver/" },
+      //   ],
+      // },
+      // "N Queens Visualizer": {
+      //   completed: true,
+      //   img: NQueensVisualizer,
+      //   desc: "Optimized visualization of all N-Queens solutions with interactive filters and statistics",
+      //   stacks: ["ReactJS", "TailwindCSS", "JavaScript", "Backtracking"],
+      //   links: [
+      //     {
+      //       name: "Code",
+      //       link: "https://github.com/SudevOP1/NQueensVisualizer",
+      //     },
+      //     {
+      //       name: "Live",
+      //       link: "https://sudevop1.github.io/NQueensVisualizer/",
+      //     },
+      //   ],
+      // },
+      // "Image to Ascii Art": {
+      //   completed: true,
+      //   img: ImageToAscii,
+      //   desc: "Transform images into stunningly detailed ASCII art using a full-stack web interface",
+      //   stacks: ["ReactJS", "Django", "TailwindCSS", "REST APIs", "Python", "Pillow", "SQLite3"],
+      //   links: [
+      //     { name: "Code", link: "https://github.com/SudevOP1/ImageToAsciiArt" },
+      //     { name: "Live", link: "https://sudevop1.github.io/ImageToAsciiArt/" },
+      //   ],
+      // },
       "AI Workout Planner": {
         completed: true,
         img: AiFitnessPlanner,
@@ -321,19 +322,19 @@ const DataProvider = ({ children }) => {
           { name: "Live", link: "" },
         ],
       },
-      "Typing Game": {
-        completed: true,
-        img: TypingGame,
-        desc: "A casual typing practice game built with JavaScript Canvas",
-        stacks: ["HTML", "JavaScript", "Canvas", "JSON"],
-        links: [
-          {
-            name: "Code",
-            link: "https://github.com/SudevOP1/TypingGame",
-          },
-          { name: "Live", link: "https://sudevop1.github.io/TypingGame/" },
-        ],
-      },
+      // "Typing Game": {
+      //   completed: true,
+      //   img: TypingGame,
+      //   desc: "A casual typing practice game built with JavaScript Canvas",
+      //   stacks: ["HTML", "JavaScript", "Canvas", "JSON"],
+      //   links: [
+      //     {
+      //       name: "Code",
+      //       link: "https://github.com/SudevOP1/TypingGame",
+      //     },
+      //     { name: "Live", link: "https://sudevop1.github.io/TypingGame/" },
+      //   ],
+      // },
       "Booknest (Work In Progress)": {
         completed: false,
         img: null,
@@ -360,32 +361,32 @@ const DataProvider = ({ children }) => {
           { name: "Live", link: "" },
         ],
       },
-      "Meme Generator": {
-        completed: true,
-        img: MemeGenerator,
-        desc: "Generate and customize memes in real-time using the Imgflip API",
-        stacks: ["ReactJS", "TypeScript", "ImgFlip API", "Bootstrap"],
-        links: [
-          {
-            name: "Code",
-            link: "https://github.com/SudevOP1/Unicode-Tasks/tree/main/Frontend%20Task%202/meme-generator",
-          },
-          { name: "Live", link: "" },
-        ],
-      },
-      "Gemini Clone": {
-        completed: true,
-        img: GeminiClone,
-        desc: "Gemini clone that answers queries using Google Gemini API",
-        stacks: ["ReactJS", "JavaScript", "Google Gemini API"],
-        links: [
-          {
-            name: "Code",
-            link: "https://github.com/SudevOP1/React_Gemini_Clone",
-          },
-          { name: "Live", link: "" },
-        ],
-      },
+      // "Meme Generator": {
+      //   completed: true,
+      //   img: MemeGenerator,
+      //   desc: "Generate and customize memes in real-time using the Imgflip API",
+      //   stacks: ["ReactJS", "TypeScript", "ImgFlip API", "Bootstrap"],
+      //   links: [
+      //     {
+      //       name: "Code",
+      //       link: "https://github.com/SudevOP1/Unicode-Tasks/tree/main/Frontend%20Task%202/meme-generator",
+      //     },
+      //     { name: "Live", link: "" },
+      //   ],
+      // },
+      // "Gemini Clone": {
+      //   completed: true,
+      //   img: GeminiClone,
+      //   desc: "Gemini clone that answers queries using Google Gemini API",
+      //   stacks: ["ReactJS", "JavaScript", "Google Gemini API"],
+      //   links: [
+      //     {
+      //       name: "Code",
+      //       link: "https://github.com/SudevOP1/React_Gemini_Clone",
+      //     },
+      //     { name: "Live", link: "" },
+      //   ],
+      // },
       "Monster Shooter": {
         completed: true,
         img: MonsterShooter,
@@ -399,73 +400,82 @@ const DataProvider = ({ children }) => {
           { name: "Live", link: "" },
         ],
       },
-      "Space Shooter": {
-        completed: true,
-        img: SpaceShooter,
-        desc: "Destroy asteroids and defend your spaceship",
-        stacks: ["Python", "Pygame", "VSCode", "Git"],
-        links: [
-          {
-            name: "Code",
-            link: "https://github.com/SudevOP1/Pygame-Projects/tree/main/Space%20Shooter",
-          },
-          { name: "Live", link: "" },
-        ],
-      },
-      "Pong Game": {
-        completed: true,
-        img: PongGame,
-        desc: "Classic 2D pong game with real-time score tracking and sound effects",
-        stacks: ["Python", "Pygame", "VSCode", "Git"],
-        links: [
-          {
-            name: "Code",
-            link: "https://github.com/SudevOP1/Pygame-Projects/tree/main/Pong%20Game",
-          },
-          { name: "Live", link: "" },
-        ],
-      },
-      "Snake Game": {
-        completed: true,
-        img: SnakeGame,
-        desc: "Classic Google-styled Snake game with smooth 2D graphics and sound",
-        stacks: ["Python", "Pygame", "VSCode", "Git"],
-        links: [
-          {
-            name: "Code",
-            link: "https://github.com/SudevOP1/Pygame-Projects/tree/main/Snake%20Game",
-          },
-          { name: "Live", link: "" },
-        ],
-      },
-      "Runner Game": {
-        completed: true,
-        img: RunnerGame,
-        desc: "Endless runner like Google Dino game with custom visuals and sounds",
-        stacks: ["Python", "Pygame", "VSCode", "Git"],
-        links: [
-          {
-            name: "Code",
-            link: "https://github.com/SudevOP1/Pygame-Projects/tree/main/Runner%20Game",
-          },
-          { name: "Live", link: "" },
-        ],
-      },
-      "Slide Puzzle": {
-        completed: true,
-        img: SlidePuzzle,
-        desc: "Slide numbered tiles to solve the grid puzzle",
-        stacks: ["Python", "Pygame", "VSCode", "Git"],
-        links: [
-          {
-            name: "Code",
-            link: "https://github.com/SudevOP1/Pygame-Projects/tree/main/Slide%20Puzzle",
-          },
-          { name: "Live", link: "" },
-        ],
-      },
+      // "Space Shooter": {
+      //   completed: true,
+      //   img: SpaceShooter,
+      //   desc: "Destroy asteroids and defend your spaceship",
+      //   stacks: ["Python", "Pygame", "VSCode", "Git"],
+      //   links: [
+      //     {
+      //       name: "Code",
+      //       link: "https://github.com/SudevOP1/Pygame-Projects/tree/main/Space%20Shooter",
+      //     },
+      //     { name: "Live", link: "" },
+      //   ],
+      // },
+      // "Pong Game": {
+      //   completed: true,
+      //   img: PongGame,
+      //   desc: "Classic 2D pong game with real-time score tracking and sound effects",
+      //   stacks: ["Python", "Pygame", "VSCode", "Git"],
+      //   links: [
+      //     {
+      //       name: "Code",
+      //       link: "https://github.com/SudevOP1/Pygame-Projects/tree/main/Pong%20Game",
+      //     },
+      //     { name: "Live", link: "" },
+      //   ],
+      // },
+      // "Snake Game": {
+      //   completed: true,
+      //   img: SnakeGame,
+      //   desc: "Classic Google-styled Snake game with smooth 2D graphics and sound",
+      //   stacks: ["Python", "Pygame", "VSCode", "Git"],
+      //   links: [
+      //     {
+      //       name: "Code",
+      //       link: "https://github.com/SudevOP1/Pygame-Projects/tree/main/Snake%20Game",
+      //     },
+      //     { name: "Live", link: "" },
+      //   ],
+      // },
+      // "Runner Game": {
+      //   completed: true,
+      //   img: RunnerGame,
+      //   desc: "Endless runner like Google Dino game with custom visuals and sounds",
+      //   stacks: ["Python", "Pygame", "VSCode", "Git"],
+      //   links: [
+      //     {
+      //       name: "Code",
+      //       link: "https://github.com/SudevOP1/Pygame-Projects/tree/main/Runner%20Game",
+      //     },
+      //     { name: "Live", link: "" },
+      //   ],
+      // },
+      // "Slide Puzzle": {
+      //   completed: true,
+      //   img: SlidePuzzle,
+      //   desc: "Slide numbered tiles to solve the grid puzzle",
+      //   stacks: ["Python", "Pygame", "VSCode", "Git"],
+      //   links: [
+      //     {
+      //       name: "Code",
+      //       link: "https://github.com/SudevOP1/Pygame-Projects/tree/main/Slide%20Puzzle",
+      //     },
+      //     { name: "Live", link: "" },
+      //   ],
+      // },
     },
     Client: {
+      GOCO: {
+        img: GOCOScreenshot,
+        desc: "Compiler Design, Electron-based IDE, Fullstack Website",
+        stacks: ["JavaCC", "Java", "Electron", "Node.js", "ReactJS", "TailwindCSS", "Git"],
+        links: [
+          { name: "Code", link: "" },
+          { name: "Live", link: "https://gocoide.com" },
+        ],
+      },
       DiamondRock: {
         img: QYScreenshot,
         desc: "Full-stack development with Django APIs and React frontend integration",

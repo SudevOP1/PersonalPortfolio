@@ -53,6 +53,18 @@ export function scrollToY(y) {
   start();
 }
 
+/**
+ * Jump to the top with no easing, killing any in-flight inertia first —
+ * otherwise `tick` keeps lerping toward the old target and undoes the jump.
+ */
+export function resetScroll() {
+  if (state.raf) cancelAnimationFrame(state.raf);
+  state.raf = null;
+  state.running = false;
+  state.target = state.current = 0;
+  window.scrollTo(0, 0);
+}
+
 /** Scroll to an element by id (or the top of the page for "#top"). */
 export function scrollToId(id) {
   if (id === "top") return scrollToY(0);

@@ -1,6 +1,17 @@
 import { motion, useReducedMotion } from "framer-motion";
 
 /**
+ * motion.create() returns a new component type on every call, so it must never
+ * run during render — React would unmount/remount the tree and replay the
+ * entry animation. Cache one type per tag instead.
+ */
+const motionTags = new Map();
+const motionTag = (tag) => {
+  if (!motionTags.has(tag)) motionTags.set(tag, motion.create(tag));
+  return motionTags.get(tag);
+};
+
+/**
  * Text that climbs out of a mask, word by word or character by character.
  * Words are never broken across lines: each word is its own overflow-hidden box.
  */
@@ -32,7 +43,7 @@ const SplitText = ({
     },
   };
 
-  const MotionTag = motion.create(Tag);
+  const MotionTag = motionTag(Tag);
   const trigger =
     forceAnimate === null
       ? { whileInView: "visible", viewport: { once, margin: "-12% 0px -12% 0px" } }

@@ -5,7 +5,7 @@ import { motion, useScroll, useSpring, useTransform, useReducedMotion } from "fr
 import InProgress from "../assets/projects/InProgress.png";
 import { useData } from "../ContextData.jsx";
 
-const FEATURED = ["Minecraft Clone", "LetsChess2", "BlogWritingAI"];
+const FEATURED = ["Minecraft Clone", "Lets Chess 2", "Blog Writing AI"];
 
 const firstLink = (project) => project.links?.find((l) => l.link && l.link.length > 0)?.link || null;
 
@@ -119,8 +119,9 @@ const Work = () => {
             data-cursor="view"
             data-cursor-label="Open"
           >
-            <span className="display text-bone/40 group-hover:text-acid text-4xl transition-colors md:text-5xl">View all</span>
-            <span className="label mt-3">{Object.keys(personal).length}+ projects</span>
+            <span className="display text-bone/40 group-hover:text-acid text-4xl transition-colors md:text-5xl">
+              View All Projects
+            </span>
           </Link>
         </motion.div>
 
