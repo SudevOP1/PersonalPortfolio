@@ -107,9 +107,7 @@ const Projects = () => {
                       <span className="bg-acid/[0.06] pointer-events-none absolute inset-0 origin-bottom scale-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-y-100" />
 
                       <div className="relative flex flex-col gap-4 py-7 md:flex-row md:items-center md:gap-8 md:py-9">
-                        <span className="label text-acid w-10 shrink-0 text-[0.6rem]">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
+                        <span className="label text-acid w-10 shrink-0 text-[0.6rem]">{String(i + 1).padStart(2, "0")}</span>
 
                         {/* inline thumb for small screens */}
                         <div className="border-line aspect-[16/10] w-full overflow-hidden border md:hidden">
@@ -117,7 +115,7 @@ const Projects = () => {
                             src={project.img || InProgress}
                             alt={name}
                             loading="lazy"
-                            className="h-full w-full object-cover grayscale"
+                            className="h-full w-full object-cover"
                           />
                         </div>
 

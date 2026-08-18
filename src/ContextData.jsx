@@ -33,20 +33,13 @@ const DataProvider = ({ children }) => {
   let profile = {
     name: "Sudev Dahitule",
     firstName: "Sudev",
-    role: "Full-Stack Developer",
-    roleLines: ["Full", "Stack", "Developer"],
+    role: "Software Developer",
+    roleLines: ["Software", "Developer"],
     location: "Mumbai, India",
     email: "sudevdahitule06@gmail.com",
     tagline: "Coding enthusiast turning ideas into interactive experiences and tools",
     available: true,
     since: "2026",
-    marquee: [
-      "Available for work",
-      "Full-stack developer",
-      "Django · FastAPI · React",
-      "Mumbai, India",
-      "Open to collaborations",
-    ],
     stats: [
       { value: "20+", label: "Projects shipped" },
       { value: "4", label: "Dev roles" },
@@ -55,8 +48,8 @@ const DataProvider = ({ children }) => {
     ],
   };
   let aboutMeText = [
-    "Hi! I'm Sudev, a full-stack developer who loves building creative and functional applications.",
-    "From crafting sleek UIs with React and Tailwind to designing robust APIs with Django and DRF, I enjoy bringing ideas to life through code.",
+    "Hi! I'm Sudev, a software developer who loves building creative and functional applications.",
+    "From crafting sleek UIs with React & Tailwind to designing robust APIs with FastAPI & Django, I enjoy bringing ideas to life through code.",
     "I enjoy taking on challenges that blend logic, design, and real-world impact and strongly believe in clean code, attention to detail, and user-first thinking.",
   ];
   let contacts = [
@@ -118,6 +111,7 @@ const DataProvider = ({ children }) => {
         { name: "Bootstrap", link: "https://getbootstrap.com/" },
         { name: "Electron", link: "https://www.electronjs.org/" },
         { name: "OpenGL", link: "https://www.opengl.org/" },
+        { name: "LWJGL", link: "https://www.lwjgl.org/" },
         { name: "Pygame", link: "https://www.pygame.org/" },
         { name: "Pillow", link: "https://python-pillow.org/" },
         { name: "p5.js", link: "https://p5js.org/" },
@@ -132,13 +126,15 @@ const DataProvider = ({ children }) => {
 
     "AI / LLMs": {
       list: [
+        { name: "Generative AI", link: "https://en.wikipedia.org/wiki/Generative_artificial_intelligence" },
         { name: "LLMs", link: "https://en.wikipedia.org/wiki/Large_language_model" },
+        { name: "RAG", link: "https://en.wikipedia.org/wiki/Retrieval-augmented_generation" },
         { name: "Prompt Engineering", link: "https://platform.openai.com/docs/guides/prompt-engineering" },
         { name: "Gemini API", link: "https://ai.google.dev/" },
         { name: "Groq API", link: "https://groq.com/" },
         { name: "Ollama", link: "https://ollama.com/" },
       ],
-      color: tagColors["violet"],
+      color: tagColors["red"],
     },
 
     "Databases / Tech": {

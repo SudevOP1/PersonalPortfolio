@@ -58,7 +58,7 @@ const ExpCard = ({ name, exp, index, total }) => {
 
             <div className="border-line mt-8 flex flex-wrap gap-x-4 gap-y-2 border-t pt-6">
               {exp.stacks.map((s) => (
-                <span key={s} className="label hover:text-acid text-[0.55rem] transition-colors">
+                <span key={s} className="label hover:text-acid text-[0.65rem] transition-colors md:text-[0.75rem]">
                   {s}
                 </span>
               ))}

@@ -21,7 +21,11 @@ const Hero = ({ ready }) => {
   const line = { hidden: { scaleX: 0 }, visible: { scaleX: 1 } };
 
   return (
-    <section ref={ref} id="top" className="relative flex min-h-[100svh] flex-col justify-between px-6 pt-28 pb-8 md:px-10">
+    <section
+      ref={ref}
+      id="top"
+      className="relative flex min-h-[92svh] flex-col justify-between px-6 pt-28 pb-16 md:min-h-[100svh] md:px-10 md:pb-8"
+    >
       <motion.div style={{ y, opacity: fade }} className="flex flex-1 flex-col justify-between">
         {/* top meta */}
         <div className="flex items-start justify-between gap-6">
