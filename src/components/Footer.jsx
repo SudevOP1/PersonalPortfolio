@@ -10,10 +10,10 @@ const Footer = () => {
       <div className="px-4 pt-10 md:px-6">
         <h2
           aria-label={profile.name}
-          className="display flex w-full translate-y-14 justify-between leading-[0.78]
+          className="display flex w-full lg:translate-y-5 justify-between leading-[0.78]
             whitespace-nowrap select-none [font-size:11.5vw]
-            [-webkit-text-stroke:0.002em_var(--color-acid)]
-            [-webkit-text-fill-color:transparent]"
+            lg:[-webkit-text-stroke:0.002em_var(--color-acid)]
+            lg:[-webkit-text-fill-color:transparent]"
         >
           {profile.name.split("").map((char, i) =>
             char === " " ? (
