@@ -66,12 +66,15 @@ const Cursor = () => {
     hide: { width: 0, height: 0, opacity: 0, backgroundColor: "rgba(0,0,0,0)", borderColor: "#ededed" },
   }[variant];
 
+  // A label sits inside the ring in dark ink, so the fill has to be solid to stay legible.
+  const ringStyle = label ? { ...ring, backgroundColor: "#d9ff00", borderColor: "#d9ff00" } : ring;
+
   return (
     <div className="pointer-events-none fixed inset-0 z-[70] hidden md:block">
       <motion.div
         className="absolute top-0 left-0 flex items-center justify-center rounded-full border"
         style={{ x: ringX, y: ringY, translateX: "-50%", translateY: "-50%" }}
-        animate={{ ...ring, scale: down ? 0.82 : 1 }}
+        animate={{ ...ringStyle, scale: down ? 0.82 : 1 }}
         transition={{ type: "spring", stiffness: 380, damping: 30, mass: 0.5 }}
       >
         <AnimatePresence>
