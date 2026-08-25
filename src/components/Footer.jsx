@@ -12,7 +12,7 @@ const Footer = () => {
           aria-label={profile.name}
           className="display flex w-full lg:translate-y-5 justify-between leading-[0.78]
             whitespace-nowrap select-none [font-size:11.5vw]
-            lg:[-webkit-text-stroke:0.002em_var(--color-acid)]
+            lg:[-webkit-text-stroke:1px_var(--color-acid)]
             lg:[-webkit-text-fill-color:transparent]"
         >
           {profile.name.split("").map((char, i) =>
