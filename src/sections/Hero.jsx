@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { MapPin } from "lucide-react";
 
 import Sudev from "../assets/Sudev.png";
 import SplitText from "../components/SplitText.jsx";
@@ -77,8 +78,11 @@ const Hero = ({ ready }) => {
               animate={ready ? { opacity: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.9 }}
             >
-              <p className="text-bone/80">{profile.location}</p>
-              <p className="mt-1">
+              <p className="text-acid flex items-center gap-2 text-[1.2rem] tracking-[0.18em]">
+                <MapPin className="h-5 w-5 shrink-0 animate-bounce" strokeWidth={1.75} />
+                {profile.location}
+              </p>
+              <p className="mt-2">
                 <Clock />
               </p>
             </motion.div>
