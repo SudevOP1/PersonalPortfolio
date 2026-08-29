@@ -35,15 +35,15 @@ const Skills = () => {
             >
               <span
                 aria-hidden
-                className="display text-bone/5 pointer-events-none absolute -top-4 right-4 text-[6rem] leading-none select-none transition-colors duration-500 group-hover/col:text-acid/10 md:text-[7rem]"
+                className="display text-bone/5 pointer-events-none absolute -top-4 right-4 text-[6rem] leading-none select-none transition-colors duration-500 group-hover/col:text-acid/20 md:text-[7rem]"
               >
                 0{i + 1}
               </span>
 
               <div className="relative mb-7 flex items-baseline justify-between gap-4">
-                <p className="label flex items-baseline gap-3">
+                <p className="label flex gap-3 items-start">
                   <span className="text-acid">0{i + 1}</span>
-                  {category}
+                  <span className="group-hover/col:text-acid text-lg transition duration-500">{category}</span>
                 </p>
                 <p className="label text-[0.55rem]">{String(unique.length).padStart(2, "0")}</p>
               </div>
