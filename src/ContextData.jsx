@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { FileText, Github, Linkedin, Mail } from "lucide-react";
+import { FileText, FolderGit2, Github, Linkedin, Mail } from "lucide-react";
 
 import UC from "../src/assets/logos/UC.png";
 import QY from "../src/assets/logos/QY.png";
@@ -72,6 +72,11 @@ const DataProvider = ({ children }) => {
       icon: <Mail className="w-5 h-5" />,
       label: null,
       href: "mailto:sudevdahitule06@gmail.com",
+    },
+    {
+      icon: <FolderGit2 className="w-5 h-5" />,
+      label: "All Projects",
+      href: `${typeof window === "undefined" ? "" : window.location.origin}/projects/`,
     },
   ];
   let tagColors = {

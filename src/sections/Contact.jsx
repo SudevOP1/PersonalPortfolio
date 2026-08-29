@@ -10,6 +10,7 @@ const nameFor = (href = "") => {
   if (href.includes("linkedin")) return "LinkedIn";
   if (href.includes("github")) return "GitHub";
   if (href.startsWith("mailto:")) return "Email";
+  if (href.includes("/projects")) return "All Projects";
   return "Resume";
 };
 
@@ -17,6 +18,7 @@ const handleFor = (href = "") => {
   if (href.includes("linkedin")) return "/in/Sudev-Dahitule";
   if (href.includes("github")) return "@SudevOP1";
   if (href.startsWith("mailto:")) return href.replace("mailto:", "");
+  if (href.includes("/projects")) return "/projects";
   return "View on Drive";
 };
 
