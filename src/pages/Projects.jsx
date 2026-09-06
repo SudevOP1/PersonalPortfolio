@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
 
@@ -7,6 +7,7 @@ import Layout from "../components/Layout.jsx";
 import SplitText from "../components/SplitText.jsx";
 import Reveal from "../components/Reveal.jsx";
 import { useData } from "../ContextData.jsx";
+import { subscribePointer } from "../lib/pointer.js";
 
 const TABS = ["Personal", "Client"];
 
@@ -39,16 +40,34 @@ const Projects = () => {
   const px = useSpring(mx, { stiffness: 180, damping: 22, mass: 0.5 });
   const py = useSpring(my, { stiffness: 180, damping: 22, mass: 0.5 });
 
-  const onMove = (e) => {
-    mx.set(e.clientX);
-    my.set(e.clientY);
+  // Hover is resolved from the shared cursor tracker instead of mouseenter/
+  // mouseleave, because the page scrolls programmatically: rows slide under a
+  // parked cursor without firing a single mouse event, which would leave the
+  // preview stuck on whichever row was last entered.
+  useEffect(() => {
+    return subscribePointer((cx, cy, inside) => {
+      const list = listRef.current;
+      if (!list) return;
 
-    // flip the card to the left of the ring once it would run off-screen,
-    // and back again only when there is room, so it doesn't jitter on the edge
-    const fitsRight = e.clientX + OFFSET_RIGHT + cardW + EDGE <= window.innerWidth;
-    const fitsLeft = e.clientX + offsetLeft(cardW) - EDGE >= 0;
-    setSide((s) => (s === "right" ? (fitsRight ? "right" : "left") : fitsLeft && fitsRight ? "right" : "left"));
-  };
+      const el = inside ? document.elementFromPoint(cx, cy) : null;
+      const row = el instanceof Element ? el.closest("[data-row]") : null;
+
+      if (!row || !list.contains(row)) {
+        setHovered(null);
+        return;
+      }
+
+      setHovered(Number(row.dataset.row));
+      mx.set(cx);
+      my.set(cy);
+
+      // flip the card to the left of the ring once it would run off-screen,
+      // and back again only when there is room, so it doesn't jitter on the edge
+      const fitsRight = cx + OFFSET_RIGHT + cardW + EDGE <= window.innerWidth;
+      const fitsLeft = cx + offsetLeft(cardW) - EDGE >= 0;
+      setSide((s) => (s === "right" ? (fitsRight ? "right" : "left") : fitsLeft && fitsRight ? "right" : "left"));
+    });
+  }, [cardW, mx, my]);
 
   // width follows the image's aspect at a fixed height, clamped so a very wide
   // or very tall shot can't take over the screen
@@ -111,7 +130,7 @@ const Projects = () => {
         </div>
 
         {/* list */}
-        <div ref={listRef} onMouseMove={onMove} onMouseLeave={() => setHovered(null)} className="mt-4">
+        <div ref={listRef} className="mt-4">
           <AnimatePresence mode="wait">
             <motion.div
               key={tab}
@@ -128,7 +147,7 @@ const Projects = () => {
                   <Reveal key={name} delay={Math.min(i * 0.04, 0.4)} y={26}>
                     <Row
                       {...(href ? { href, target: "_blank", rel: "noopener noreferrer" } : {})}
-                      onMouseEnter={() => setHovered(i)}
+                      data-row={i}
                       className="group border-line hover:border-acid/40 relative block border-b transition-colors"
                       data-cursor={href ? "view" : "hide"}
                       data-cursor-label={href ? "Open" : ""}

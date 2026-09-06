@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
 
+import { subscribePointer } from "../lib/pointer.js";
+
 /**
  * Custom cursor: a small dot that tracks 1:1 and a ring that lags behind.
  * Any element can drive it with `data-cursor="link|view|drag|hide"` and
@@ -24,32 +26,35 @@ const Cursor = () => {
     setEnabled(true);
     document.body.classList.add("has-custom-cursor");
 
-    const onMove = (e) => {
-      x.set(e.clientX);
-      y.set(e.clientY);
+    // Re-read what sits under the cursor on every move *and* every scroll, so
+    // scrolling a new element under a parked cursor still swaps the variant.
+    const unsubscribe = subscribePointer((cx, cy, inside) => {
+      x.set(cx);
+      y.set(cy);
 
-      const hit = e.target instanceof Element ? e.target.closest("[data-cursor]") : null;
+      const el = inside ? document.elementFromPoint(cx, cy) : null;
+      const hit = el instanceof Element ? el.closest("[data-cursor]") : null;
+
       if (hit) {
         setVariant(hit.getAttribute("data-cursor") || "link");
         setLabel(hit.getAttribute("data-cursor-label") || "");
-      } else if (e.target instanceof Element && e.target.closest("a,button,[role='button']")) {
+      } else if (el instanceof Element && el.closest("a,button,[role='button']")) {
         setVariant("link");
         setLabel("");
       } else {
         setVariant("default");
         setLabel("");
       }
-    };
+    });
 
     const onDown = () => setDown(true);
     const onUp = () => setDown(false);
 
-    window.addEventListener("mousemove", onMove);
     window.addEventListener("mousedown", onDown);
     window.addEventListener("mouseup", onUp);
 
     return () => {
-      window.removeEventListener("mousemove", onMove);
+      unsubscribe();
       window.removeEventListener("mousedown", onDown);
       window.removeEventListener("mouseup", onUp);
       document.body.classList.remove("has-custom-cursor");
